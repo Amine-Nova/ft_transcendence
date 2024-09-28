@@ -1,0 +1,124 @@
+/* General styling for the body */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('/frontend/img/output.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+/* Container for the login box */
+.login-container {
+    background-color: url('/frontend/img/output.png'); /* Transparent black background */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Login title styling */
+.login-title {
+    font-size: 2.5em;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Styling for the form inputs */
+.form-group label {
+    font-size: 1.1em;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.form-group input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Login button styling */
+.login-btn {
+    padding: 10px;
+    font-size: 1em;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: background-color 1.3s ease, transform 1.2s ease;
+}
+
+.login-btn:hover {
+    background-color: #2e3031;
+    transform: translateY(-2px);
+}
+
+/* Forgot password link */
+.sign-up {
+    margin-top: 15px;
+}
+
+.sign-up a {
+    padding: 5px;
+    border-radius: 8px;
+    background-color: white;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.sign-up a:hover {
+    color: #0056b3;
+}
+
+/* Fade-in animation for the container */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px;
+    }
+
+    .login-title {
+        font-size: 2em;
+    }
+
+    .login-btn {
+        font-size: 1em;
+        padding: 12px;
+    }
+}

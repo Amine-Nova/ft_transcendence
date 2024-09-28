@@ -1,0 +1,123 @@
+body{
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background: url('/frontend/img/output.png') no-repeat center center;
+	background-size: cover;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	color: #fff;
+}
+.signin a{
+	display: inline-block;
+	padding: 15px 40px;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: #fff;
+	font-size: 1.2em;
+	font-weight: bold;
+	border-radius: 8px;
+	text-decoration: none;
+	transition: background-color 0.3s ease, transform 0.2s;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	position: relative; /* Keeps button above background */
+	z-index: 1;
+}
+.welcome-container {
+	max-width: 400px;
+	position: relative; /* Required for pseudo-element */
+	padding: 200px;
+	border-radius: 15px;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+	text-align: center;
+	animation: fadeIn 1.5s ease-in-out;
+	overflow: hidden; /* Ensures the pseudo-element stays inside the container */
+}
+
+/* Pseudo-element to apply a transparent background image */
+.welcome-container::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url('/frontend/img/pingpong4.jpeg') no-repeat center center;
+	background-size: cover;
+	opacity: 0.5; /* Adjust transparency here (0.0 - fully transparent, 1.0 - fully opaque) */
+	z-index: 1; /* Ensures the image is behind the content */
+}
+
+/* Heading styling */
+h1 {
+	font-size: 2.5em;
+	font-weight: bold;
+	color: #fff;
+	margin-bottom: 20px; /* Increase the space below the heading */
+	margin-bottom: 100px;
+	position: relative; /* Ensures text stays above the background */
+	z-index: 1;
+}
+
+/* Subtitle styling */
+h3 {
+	font-size: 1.4em;
+	font-weight: 300;
+	color: #e0f0ea;
+	margin-bottom: -50px; /* Space below subtitle */
+	position: relative;
+	z-index: 1;
+}
+
+/* Button styling */
+.btn {
+	display: inline-block;
+	padding: 15px 40px;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: #fff;
+	font-size: 1.2em;
+	font-weight: bold;
+	border-radius: 8px;
+	text-decoration: none;
+	transition: background-color 0.3s ease, transform 0.2s;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	position: relative; /* Keeps button above background */
+	z-index: 1;
+}
+
+/* Button hover effect */
+.btn:hover {
+	background-color: #878787;
+	transform: translateY(-3px);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+	.welcome-container {
+		width: 90%;
+		padding: 30px;
+	}
+
+	h1 {
+		font-size: 2em;
+	}
+
+	.btn {
+		width: 100%;
+		padding: 12px;
+		font-size: 1.1em;
+	}
+}
