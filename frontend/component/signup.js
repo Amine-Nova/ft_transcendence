@@ -34,12 +34,20 @@ class signup extends HTMLElement{
         
         submitBuuton.addEventListener('click', async function(event){
                 event.preventDefault();
-            console.log(user.value);
-        
-            console.log(user.value);
-            console.log(mail.value);
-            console.log(pass.value);
-            console.log(repass.value);
+            if (pass.value != repass.value){
+                alert("passwords do not match");
+                return;
+            }
+            if (user.value == "" || pass.value == "" || mail.value == "")
+            {
+                alert("please fill all fields");
+                return;
+            }
+            if(mail.value.indexOf("@") == -1 || mail.value.indexOf(".") == -1)
+            {
+                alert("please enter a valid email");
+                return;
+            }
             const res = await fetch("http://127.0.0.1:8000/signup/", {
                     method :"POST",
                     mode:"cors",
