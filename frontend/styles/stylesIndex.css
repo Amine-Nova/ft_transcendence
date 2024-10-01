@@ -4,7 +4,7 @@ body{
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-	background: url('/frontend/img/output.png') no-repeat center center;
+	background: url('../img/output.png') no-repeat center center;
 	background-size: cover;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	color: #fff;
@@ -42,7 +42,7 @@ body{
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: url('/frontend/img/pingpong4.jpeg') no-repeat center center;
+	background: url('../img/pingpong4.jpeg') no-repeat center center;
 	background-size: cover;
 	opacity: 0.5; /* Adjust transparency here (0.0 - fully transparent, 1.0 - fully opaque) */
 	z-index: 1; /* Ensures the image is behind the content */

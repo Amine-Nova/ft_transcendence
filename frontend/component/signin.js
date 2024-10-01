@@ -61,10 +61,8 @@ class signin extends HTMLElement{
                     });
                 }
             }).then(data => {
-                localStorage.setItem('username', data.user.username);
-                const dashboard = document.createElement('dashboard-component'); 
-                document.body.appendChild(dashboard);
-                window.location.hash = "#dashboard"; 
+                localStorage.setItem('username', user.value);
+                window.location.hash = "#dashboard";
             })
             .catch(error => {
                 console.error(error); // Log error

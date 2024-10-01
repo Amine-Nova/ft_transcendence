@@ -33,8 +33,8 @@ def login(req):
     serializer = UserSerializer(instance=user)
     refresh = RefreshToken.for_user(user)
     response =  Response({
-        "user": serializer.data,
-        "access": str(refresh.access_token)
+        "access": str(refresh.access_token),
+        "refresh": str(refresh)
     }, status=status.HTTP_200_OK)
     set_token_cookies(response, str(refresh), str(refresh.access_token))
     return response
@@ -54,9 +54,18 @@ def signup(req):
 def logout(req):
     try:
         refresh_token = req.COOKIES.get('refresh_token')
+        response = Response({"detail": "Successfully logged out."}, status=status.HTTP_205_RESET_CONTENT)
         if refresh_token:
             token = RefreshToken(refresh_token)
             token.blacklist()
-        return Response({"detail": "Successfully logged out."}, status=status.HTTP_205_RESET_CONTENT)
+        response.delete_cookie('access_token')
+        response.delete_cookie('refresh_token')
+        return response
     except Exception as e:
         return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def test(req):
+    return Response({"detail": "You are authenticated !"}, status=status.HTTP_200_OK)
+

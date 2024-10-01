@@ -7,14 +7,14 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: url('/frontend/img/output.png') no-repeat center center fixed;
+    background: url('../img/output.png') no-repeat center center fixed;
     background-size: cover;
 }
 
 
 /* Container for the login box */
 .login-container {
-    background-color: url('/frontend/img/output.png'); /* Transparent black background */
+    background-color: url('../img/pingpong4.jpeg'); /* Transparent black background */
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
