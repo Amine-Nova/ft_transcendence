@@ -51,6 +51,8 @@ class signin extends HTMLElement{
                 {
                 if (res.ok) 
                 {
+                    localStorage.setItem('username', user.value);
+                    window.location.hash = "#dashboard";
                     return res.json();
                 } 
                 else 
@@ -60,16 +62,8 @@ class signin extends HTMLElement{
                         alert(data.detail);
                     });
                 }
-            }).then(data => {
-                localStorage.setItem('username', user.value);
-                window.location.hash = "#dashboard";
-            })
-            .catch(error => {
-                console.error(error); // Log error
-                // Optionally show error message to the user
             });
-        });
-    }
-
+        }
+    )}
 }
 customElements.define('signin-component', signin);

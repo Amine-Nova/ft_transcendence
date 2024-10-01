@@ -19,10 +19,12 @@ def set_token_cookies(response, refresh_token, access_token):
         value=refresh_token,
         httponly=True,
         secure=True,
+        samesite='None',
     )
     response.set_cookie(
         key='access_token',
         value=access_token,
+        samesite='None',
     )
 
 @api_view(['POST'])
