@@ -43,6 +43,10 @@ def login(req):
 
 @api_view(['POST'])
 def signup(req):
+    if User.objects.filter(username=req.data['username']).exists():
+        return Response({"error": "Username already taken"}, status=status.HTTP_400_BAD_REQUEST)
+    if User.objects.filter(email=req.data['email']).exists():
+        return Response({"error": "Email already taken"}, status=status.HTTP_400_BAD_REQUEST)
     serializer = UserSerializer(data=req.data)
     if serializer.is_valid():
         serializer.save()
@@ -50,7 +54,7 @@ def signup(req):
         user.set_password(req.data['password'])
         user.save()
         return Response({"user": serializer.data})
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response(serializer.errors)
 
 @api_view(['POST'])
 def logout(req):

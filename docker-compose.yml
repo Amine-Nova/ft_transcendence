@@ -11,6 +11,8 @@ services:
       - ./backend/project:/project
     networks:
       - ftr
+    depends_on:
+      - db
 
   #######################################
 
@@ -29,8 +31,24 @@ services:
 
   #######################################
 
+  db:
+    container_name: postgres_db
+    build: 
+      context: .
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: amine
+      POSTGRES_PASSWORD: amine
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - ftr
+
+volumes:
+  postgres_data:
+
 networks:  
   ftr:
     driver: bridge
-
-

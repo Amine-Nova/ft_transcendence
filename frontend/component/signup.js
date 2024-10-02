@@ -48,22 +48,31 @@ class signup extends HTMLElement{
                 alert("please enter a valid email");
                 return;
             }
-            const res = await fetch("http://127.0.0.1:8000/signup/", {
-                    method :"POST",
-                    mode:"cors",
+            try {
+                const res = await fetch("http://127.0.0.1:8000/signup/", {
+                    method: "POST",
+                    mode: "cors",
                     headers: {
-                            'Content-Type': 'application/json',
-                          },
-                        "method":"POST",
-                        "body" : JSON.stringify({
-                                username: user.value, 
-                                password: pass.value,
-                                email: mail.value,
-                            })
-                        })
-                        window.location.hash = "#signin";
-                    });
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: user.value,
+                        password: pass.value,
+                        email: mail.value,
+                    })
+                });
+                const data = await res.json();
+        
+                if (res.ok) {
+                    window.location.hash = "#signin";
+                } else {
+                    alert(data.error || "An error occurred during signup.");
                 }
+                } catch (error) {
+                    alert("Failed to sign up. Please try again.");
+                }
+            });
+}
     
 }
 customElements.define('signup-component', signup);

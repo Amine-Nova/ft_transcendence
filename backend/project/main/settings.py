@@ -62,6 +62,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost",
     "http://127.0.0.1",
+    "http://127.0.0.1:5500",
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -112,8 +113,12 @@ SIMPLE_JWT = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'amine', 
+        'PASSWORD': 'amine',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 
