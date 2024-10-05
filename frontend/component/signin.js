@@ -12,7 +12,12 @@ class signin extends HTMLElement{
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
+            <div class="form-group">
             <h3><a type="submit" class="login-btn" id="log">Login</a></h3>
+            </div>
+            <div class="form-group">
+            <h3><a type="submit" class="login-btn" id="intra">intra login</a></h3>
+            </div>
             <p>
             <p class="login-link">Already have an account? <a href="#signup">SignUp</a></p>
             </p>
@@ -22,6 +27,7 @@ class signin extends HTMLElement{
         let user = document.getElementById("username");
         let pass = document.getElementById("password");
         let submitBuuton = document.getElementById("log");
+        let intraButton = document.getElementById("intra");
         
         
         submitBuuton.addEventListener('click', async function(event)
@@ -63,7 +69,14 @@ class signin extends HTMLElement{
                     });
                 }
             });
-        }
-    )}
+        })
+        intraButton.addEventListener('click', async function(event) {
+            event.preventDefault(); // Prevent default action of the button click
+        
+            window.location.href = "http://127.0.0.1:8000/login42/";
+        });
+        
+
+}
 }
 customElements.define('signin-component', signin);

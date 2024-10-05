@@ -1,5 +1,5 @@
 """
-URL configuration for main project.
+URL configuration for server project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,12 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-from django.contrib import admin
-from django.urls import path, include
+from login42 import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include("ua.urls")),
-    path('', include("login42.urls")),
+    path('login42/', views.login42, name='login42'),
+    path('login42_redir/', views.login42_redir, name='login42_redirect'),
 ]

@@ -66,6 +66,9 @@ def logout(req):
             token.blacklist()
         response.delete_cookie('access_token')
         response.delete_cookie('refresh_token')
+        response.delete_cookie('username')
+        for cookie in req.COOKIES.keys():
+            response.delete_cookie(cookie)
         return response
     except Exception as e:
         return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)

@@ -3,3 +3,4 @@ django-rest-framework
 djangorestframework-simplejwt
 django-cors-headers
 psycopg2-binary>=2.9.0
+requests

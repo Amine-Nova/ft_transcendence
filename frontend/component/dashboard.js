@@ -15,9 +15,24 @@ class dashboard extends HTMLElement
             </div>
         </div>
         `;
+
+        const cookies = document.cookie.split('; ');
+        let usernameValue = null;
+        for (const cookie of cookies) {
+            const [key, val] = cookie.split('=');
+            if (key === 'username') {
+                usernameValue = val;
+                break;
+            }
+        }
+        localStorage.setItem('username', usernameValue);
+
+
         let submitBuuton = document.getElementById("log");
         submitBuuton.addEventListener('click', async function(event)
         {
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('refresh_token');
                 event.preventDefault();
             const res = await fetch("http://127.0.0.1:8000/logout/", 
             {

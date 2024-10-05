@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ua',
+    'login42',
+    # 'login42.apps.Login42Config',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
@@ -62,7 +64,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost",
     "http://127.0.0.1",
-    "http://127.0.0.1:5500",
+    "http://127.0.0.1:8000"
 ]
 
 ROOT_URLCONF = 'main.urls'
