@@ -41,7 +41,6 @@ class dashboard extends HTMLElement
             }).then(response => {
                 if (response.ok)
                 {
-                    localStorage.clear();
                     window.location.hash = "#signin";
                 } 
                 else
