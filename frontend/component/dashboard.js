@@ -4,17 +4,29 @@ class dashboard extends HTMLElement
     {
         const username = localStorage.getItem('username');
         this.innerHTML = `
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard" onclick="changeLanguage('en')">English</a></li>
+                    <li><a href="#dashboard" onclick="changeLanguage('ar')">Arabic</a></li>
+                    <li><a href="#dashboard" onclick="changeLanguage('es')">Spanish</a></li>
+                    <li><a href="#dashboard" onclick="changeLanguage('jap')">Japanese</a></li>
+                </ul>
+            </nav>
+        </header>
         <div class="header">
             <button class="username" id="log">${username ? username : 'Guest'}</button>
         </div>
         
         <div class="main-container">
             <div class="content">
-            <a href="" class="btn">Offline</a>
-            <a href="" class="btn">Tournament</a>
+                <a href="" class="btn" data-i18n="Offline"></a>
+                <a href="" class="btn" data-i18n="Tournament"></a>
             </div>
         </div>
         `;
+        const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+        changeLanguage(savedLang);
 
         const cookies = document.cookie.split('; ');
         let usernameValue = null;
