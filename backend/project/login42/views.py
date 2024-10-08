@@ -1,20 +1,10 @@
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.http import HttpRequest, HttpResponse, JsonResponse
 
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import status
-from rest_framework.decorators import authentication_classes, permission_classes
-from rest_framework.authentication import SessionAuthentication, TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
 import requests
 
-from .models import User 
-from ua.serializers import UserSerializer
+from .models import User
 from django.contrib.auth.models import User
-from rest_framework.authtoken.models import Token
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from ua.views import signup,login
@@ -86,23 +76,19 @@ def login42_redir(request):
         else:
             print(f"User {username} already exists.")
 
-        # Step 5: Generate JWT tokens for the user
         refresh = RefreshToken.for_user(user)
         access_token = str(refresh.access_token)
         refresh_token = str(refresh)
 
-        response = HttpResponse(status=302)  # Set status to 302 for redirect
+        response = HttpResponse(status=302)
 
-        # Set cookies (adjust max_age, httponly, secure as needed)
         response.set_cookie(key='access_token', value=access_token)
         response.set_cookie(key='refresh_token', value=refresh_token)
         response.set_cookie(key='username', value=username)
 
         response['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
         response['Pragma'] = 'no-cache'
-
-        # Redirect to the dashboard
-        response['Location'] = "http://127.0.0.1/#dashboard"  # Set the redirect location
+        response['Location'] = "http://127.0.0.1/#dashboard"
 
         return response
 

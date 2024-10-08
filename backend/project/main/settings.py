@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -109,6 +109,9 @@ SIMPLE_JWT = {
     "JWK_URL": None,
     "LEEWAY": 0,
 }
+
+SSL_CERTIFICATE = os.path.join(BASE_DIR, 'abenmous.crt')
+SSL_KEY = os.path.join(BASE_DIR, 'abenmous.key')
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

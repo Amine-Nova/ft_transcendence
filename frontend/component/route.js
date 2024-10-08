@@ -3,6 +3,7 @@ const route= {
     'signin':'signin-component',
     'signup':'signup-component',
     'dashboard':'dashboard-component',
+    'game':'game-component',
 }
 
 export default route
