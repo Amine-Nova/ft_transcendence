@@ -62,9 +62,9 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost",
-    "http://127.0.0.1",
-    "http://127.0.0.1:8000"
+    "https://localhost:443",
+    "https://127.0.0.1:443",
+    "https://127.0.0.1",
 ]
 
 ROOT_URLCONF = 'main.urls'

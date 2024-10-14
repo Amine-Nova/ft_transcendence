@@ -2,16 +2,19 @@ class dashboard extends HTMLElement
 {
     connectedCallback()
     {
-        const username = localStorage.getItem('username');
         this.innerHTML = `
         <div class="header">
-            <button class="username" id="log">${username ? username : 'Guest'}</button>
+        <div class="content">
+            <button class="btn" id="log">Logout</button>
         </div>
+        </div>
+
         
         <div class="main-container">
             <div class="content">
             <a href="#game" class="btn">Offline</a>
             <a href="" class="btn">Tournament</a>
+            <a href="#pong" class="btn">Play Pong</a>  
             </div>
         </div>
         `;
@@ -25,9 +28,10 @@ class dashboard extends HTMLElement
                 break;
             }
         }
-        localStorage.setItem('username', usernameValue);
-
-
+        function deleteCookie(name) {
+            document.cookie = `${name}=; expires=Thu, 20 Sep 2001 00:00:00 UTC; path=/;`;
+          }
+          
         let submitBuuton = document.getElementById("log");
         submitBuuton.addEventListener('click', async function(event)
         {
@@ -41,6 +45,10 @@ class dashboard extends HTMLElement
             }).then(response => {
                 if (response.ok)
                 {
+                    deleteCookie('access');
+                    deleteCookie('refresh');
+                    deleteCookie('username');
+                    localStorage.clear();
                     window.location.hash = "#signin";
                 } 
                 else

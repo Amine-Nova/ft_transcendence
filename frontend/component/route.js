@@ -4,6 +4,7 @@ const route= {
     'signup':'signup-component',
     'dashboard':'dashboard-component',
     'game':'game-component',
+    'pong': 'pong-game' ,
 }
 
 export default route

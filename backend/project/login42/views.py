@@ -82,13 +82,13 @@ def login42_redir(request):
 
         response = HttpResponse(status=302)
 
-        response.set_cookie(key='access_token', value=access_token)
-        response.set_cookie(key='refresh_token', value=refresh_token)
+        response.set_cookie(key='access', value=access_token)
+        response.set_cookie(key='refresh', value=refresh_token)
         response.set_cookie(key='username', value=username)
 
         response['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
         response['Pragma'] = 'no-cache'
-        response['Location'] = "http://127.0.0.1/#dashboard"
+        response['Location'] = "https://127.0.0.1/#dashboard"
 
         return response
 

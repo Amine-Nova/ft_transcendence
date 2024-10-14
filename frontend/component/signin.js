@@ -53,25 +53,21 @@ class signin extends HTMLElement{
                                 username: user.value, 
                                 password: pass.value,
                         })
-            }).then(res => 
-                {
-                if (res.ok) 
-                {
-                    localStorage.setItem('username', user.value);
-                    window.location.hash = "#dashboard";
-                    return res.json();
-                } 
-                else 
-                {
-                    return res.json().then(data => 
-                    {
-                        alert(data.detail);
-                    });
-                }
             });
+            if (res.ok) 
+            {
+                const data = await res.json();
+                document.cookie = `refresh=${data.refresh}; path=/`;
+                document.cookie = `access=${data.access}; path=/`;
+                window.location.hash = "#dashboard";
+            } 
+            else 
+            {
+
+            }
         })
         intraButton.addEventListener('click', async function(event) {
-            event.preventDefault(); // Prevent default action of the button click
+            event.preventDefault();
         
             window.location.href = "http://127.0.0.1:8000/login42/";
         });
