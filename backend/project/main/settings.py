@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -62,9 +62,9 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost",
-    "http://127.0.0.1",
-    "http://127.0.0.1:8000"
+    "https://localhost:443",
+    "https://127.0.0.1:443",
+    "https://127.0.0.1",
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -109,6 +109,9 @@ SIMPLE_JWT = {
     "JWK_URL": None,
     "LEEWAY": 0,
 }
+
+SSL_CERTIFICATE = os.path.join(BASE_DIR, 'abenmous.crt')
+SSL_KEY = os.path.join(BASE_DIR, 'abenmous.key')
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

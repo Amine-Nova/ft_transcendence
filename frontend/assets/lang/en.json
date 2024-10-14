@@ -1,4 +1,4 @@
-{
+ {
     "Welcome!": "Welcome",
     "Get Started": "Get Started",
     "Login": "Login",
@@ -13,5 +13,20 @@
     "Sign Up":"Sign Up",
     "Log in":"Log in",
     "Offline" : "Offline",
-    "Tournament" : "Tournament"
+    "Tournament" : "Tournament",
+    "Play Pong": "Play Pong",
+    "Player Registration": "Player Registration",
+    "First Player Name": "First Player Name",
+    "Second Player Name": "Second Player Name",
+    "Register": "Register",
+    "Matchmaking": "Matchmaking",
+    "Player 1: ": "Player 1: ",
+    "Player 2: ": "Player 2: ",
+    "Start Game": "Start Game",
+    "Game Over": "Game Over",
+    "wins!": "wins!",
+    "Play Again": "Play Again",
+    "Return to Dashboard": "Return to Dashboard",
+    "Enter your name": "Enter your name",
+    "Join Queue": "Join Queue"
 }

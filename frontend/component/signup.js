@@ -8,6 +8,7 @@ class signup extends HTMLElement{
                     <li><a href="#signup" onclick="changeLanguage('ar')">Arabic</a></li>
                     <li><a href="#signup" onclick="changeLanguage('es')">Spanish</a></li>
                     <li><a href="#signup" onclick="changeLanguage('jap')">Japanese</a></li>
+                    <li><a href="#signup" onclick="changeLanguage('tmz')">Tamazight</a></li>
                 </ul>
             </nav>
         </header>
@@ -37,9 +38,8 @@ class signup extends HTMLElement{
                 </p>
             </form>
         </div>
-        `;        
-        const savedLang = localStorage.getItem('preferredLanguage') || 'en';
-        changeLanguage(savedLang);
+        `;
+        changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
 
         let user = document.getElementById("username");
         let pass = document.getElementById("password");

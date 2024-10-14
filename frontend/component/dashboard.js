@@ -2,7 +2,6 @@ class dashboard extends HTMLElement
 {
     connectedCallback()
     {
-        const username = localStorage.getItem('username');
         this.innerHTML = `
         <header>
             <nav>
@@ -11,22 +10,25 @@ class dashboard extends HTMLElement
                     <li><a href="#dashboard" onclick="changeLanguage('ar')">Arabic</a></li>
                     <li><a href="#dashboard" onclick="changeLanguage('es')">Spanish</a></li>
                     <li><a href="#dashboard" onclick="changeLanguage('jap')">Japanese</a></li>
+                    <li><a href="#dashboard" onclick="changeLanguage('tmz')">Tamazight</a></li>
                 </ul>
             </nav>
         </header>
         <div class="header">
-            <button class="username" id="log">${username ? username : 'Guest'}</button>
+            <div class="content">
+                <button class="btn" id="log">Logout</button>
+            </div>
         </div>
         
         <div class="main-container">
             <div class="content">
                 <a href="" class="btn" data-i18n="Offline"></a>
                 <a href="" class="btn" data-i18n="Tournament"></a>
+                <a href="#pong" class="btn" data-i18n="Play Pong"></a>
             </div>
         </div>
         `;
-        const savedLang = localStorage.getItem('preferredLanguage') || 'en';
-        changeLanguage(savedLang);
+        changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
 
         const cookies = document.cookie.split('; ');
         let usernameValue = null;
@@ -37,9 +39,10 @@ class dashboard extends HTMLElement
                 break;
             }
         }
-        localStorage.setItem('username', usernameValue);
-
-
+        function deleteCookie(name) {
+            document.cookie = `${name}=; expires=Thu, 20 Sep 2001 00:00:00 UTC; path=/;`;
+          }
+          
         let submitBuuton = document.getElementById("log");
         submitBuuton.addEventListener('click', async function(event)
         {
@@ -53,6 +56,10 @@ class dashboard extends HTMLElement
             }).then(response => {
                 if (response.ok)
                 {
+                    deleteCookie('access');
+                    deleteCookie('refresh');
+                    deleteCookie('username');
+                    localStorage.clear();
                     window.location.hash = "#signin";
                 } 
                 else
