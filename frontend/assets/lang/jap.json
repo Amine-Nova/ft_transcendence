@@ -14,5 +14,19 @@
     "Log in": "ログイン",
     "Offline" : "オフライン",
     "Tournament" : "トーナメント",
-    "Play Pong": "ポンをプレイする"
+    "Play Pong": "ポンをプレイする",
+    "Player Registration": "プレイヤー登録",
+    "First Player Name": "最初のプレイヤー名",
+    "Second Player Name": "2 番目のプレイヤー名",
+    "Register": "登録",
+    "Matchmaking": "マッチメイキング",
+    "Player 1: ": "プレイヤー 1:",
+    "Player 2: ": "プレイヤー 2:",
+    "Start Game": "ゲームを開始",
+    "Game Over": "ゲームオーバー",
+    "wins!": "勝ち!",
+    "Play Again": "もう一度プレイ",
+    "Return to Dashboard": "ダッシュボードに戻る",
+    "Enter your name": "名前を入力",
+    "Join Queue": "キューに参加"
 }
