@@ -23,7 +23,7 @@ function deleteCookie(name)
 
 async function refreshAccessToken() 
 {
-    const res = await fetch('http://127.0.0.1:8000/token-refresh/', {
+    const res = await fetch('http://0.0.0.0:8000/token-refresh/', {
         method :"POST",
         mode:"cors",
         headers:

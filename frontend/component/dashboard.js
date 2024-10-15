@@ -11,22 +11,33 @@ class dashboard extends HTMLElement
         const username = getCookieValue('username') || 'Guest';
 
         this.innerHTML = `
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard" onclick="changeLanguage('en')">English</a></li>
+                    <li><a href="#dashboard" onclick="changeLanguage('ar')">Arabic</a></li>
+                    <li><a href="#dashboard" onclick="changeLanguage('es')">Spanish</a></li>
+                    <li><a href="#dashboard" onclick="changeLanguage('jap')">Japanese</a></li>
+                    <li><a href="#dashboard" onclick="changeLanguage('tmz')">Tamazight</a></li>
+                </ul>
+            </nav>
+        </header>
         <div class="header">
         <div class="content">
-            <button class="btn" id="log">Logout</button>
+            <button class="btn" id="log" data-i18n="Logout"></button>
             </div>
             </div>
             
         <p class="btn" id="username">${username}</p>
         <div class="main-container">
             <div class="content">
-            <a href="#game" class="btn">Offline</a>
-            <a href="" class="btn">Tournament</a>
-            <a href="#pong" class="btn">Play Pong</a>  
+            <a href="#game" class="btn" data-i18n="Offline"></a>
+            <a href="" class="btn" data-i18n="Tournament"></a>
+            <a href="#pong" class="btn" data-i18n="Play Pong"></a>  
             </div>
         </div>
         `;
-
+        changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         function deleteCookie(name) {
             document.cookie = `${name}=; expires=Thu, 20 Sep 2001 00:00:00 UTC; path=/;`;
           }

@@ -20,15 +20,29 @@ class PongGame extends HTMLElement {
 
     showRegistrationPopup() {
         this.innerHTML = `
-            <div class="login-container">
-                <h2>Player Registration</h2>
-                <div class="form-group">
-                <input type="text" id="player1Name" placeholder="Player 1 Name">
-                <input type="text" id="player2Name" placeholder="Player 2 Name">
-                </div>
-                <button class="btn" id="registerPlayers">Register</button>
+            <header>
+            <nav>
+                <ul>
+                    <li><a href="#pong" onclick="changeLanguage('en')">English</a></li>
+                    <li><a href="#pong" onclick="changeLanguage('ar')">Arabic</a></li>
+                    <li><a href="#pong" onclick="changeLanguage('es')">Spanish</a></li>
+                    <li><a href="#pong" onclick="changeLanguage('jap')">Japanese</a></li>
+                    <li><a href="#pong" onclick="changeLanguage('tmz')">Tamazight</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="login-container">
+            <h2 data-i18n="Player Registration"></h2>
+            <div class="form-group">
+                <label data-i18n="First Player Name"></label> 
+                <input type="text" id="player1Name">
+                <label data-i18n="Second Player Name"></label> 
+                <input type="text" id="player2Name">
             </div>
+            <button class="btn" id="registerPlayers" data-i18n="Register"></button>
+        </div>
         `;
+        changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         this.querySelector('#registerPlayers').addEventListener('click', this.registerPlayers.bind(this));
     }
 
@@ -53,13 +67,20 @@ class PongGame extends HTMLElement {
         this.innerHTML = `
         <div class="login-container">
             <div class="popup">
-                <h2 class="signup-title">Matchmaking</h2>
-                <p class="word">Player 1: ${this.player1Name}</p>
-                <p class="word">Player 2: ${this.player2Name}</p>
-                <button class="btn" id="startGame">Start Game</button>
+                <h2 class="signup-title" data-i18n="Matchmaking"></h2>
+                <div class="player-info">
+                    <span  data-i18n="Player 1: "></span>
+                    <span > ${this.player1Name} </span>
+                </div>
+                <div class="player-info">
+                    <span data-i18n="Player 2: "></span>
+                    <span > ${this.player2Name} </span>
+                </div>
+                <button class="btn" id="startGame" data-i18n="Start Game"></button>
             </div>
             </div>
         `;
+        changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         this.querySelector('#startGame').addEventListener('click', this.startGame.bind(this));
     }
 
@@ -184,12 +205,16 @@ class PongGame extends HTMLElement {
         const winner = this.score1 >= 3 ? this.player1Name : this.player2Name;
         this.innerHTML = `
         <div class="login-container">
-            <h2 class="login-title">Game Over</h2>
-            <p class="word">${winner} wins!</p>
-            <button class="btn" id="restartGame">Play Again</button>
-            <button class="btn" id="returnToDashboard">Return to Dashboard</button>
+            <h2 class="login-title" data-i18n="Game Over"></h2>
+            <div class="player-info">
+                <span class="word">${winner} </span>
+                <span class="word" data-i18n="wins!"></span>
+            </div>
+            <button class="btn" id="restartGame" data-i18n="Play Again"></button>
+            <button class="btn" id="returnToDashboard" data-i18n="Return to Dashboard"></button>
         </div>
         `;
+        changeLanguage(localStorage.getItem('preferredLanguage') || 'en'); 
         this.querySelector('#restartGame').addEventListener('click', () => {
             this.score1 = 0;
             this.score2 = 0;
