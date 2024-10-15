@@ -2,14 +2,22 @@ class dashboard extends HTMLElement
 {
     connectedCallback()
     {
+        const getCookieValue = (name) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        };
+
+        const username = getCookieValue('username') || 'Guest';
+
         this.innerHTML = `
         <div class="header">
         <div class="content">
             <button class="btn" id="log">Logout</button>
-        </div>
-        </div>
-
-        
+            </div>
+            </div>
+            
+        <p class="btn" id="username">${username}</p>
         <div class="main-container">
             <div class="content">
             <a href="#game" class="btn">Offline</a>
@@ -19,15 +27,6 @@ class dashboard extends HTMLElement
         </div>
         `;
 
-        const cookies = document.cookie.split('; ');
-        let usernameValue = null;
-        for (const cookie of cookies) {
-            const [key, val] = cookie.split('=');
-            if (key === 'username') {
-                usernameValue = val;
-                break;
-            }
-        }
         function deleteCookie(name) {
             document.cookie = `${name}=; expires=Thu, 20 Sep 2001 00:00:00 UTC; path=/;`;
           }
@@ -35,9 +34,7 @@ class dashboard extends HTMLElement
         let submitBuuton = document.getElementById("log");
         submitBuuton.addEventListener('click', async function(event)
         {
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('refresh_token');
-                event.preventDefault();
+            event.preventDefault();
             const res = await fetch("http://127.0.0.1:8000/logout/", 
             {
                     method :"POST",

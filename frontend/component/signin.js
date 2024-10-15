@@ -41,29 +41,33 @@ class signin extends HTMLElement{
             }
             const res = await fetch("http://127.0.0.1:8000/login/", 
             {
-                    method :"POST",
-                    mode:"cors",
-                    headers:
-                    {
-                        'Content-Type': 'application/json',
-                    },
-                        "method":"POST",
-                        "body" : JSON.stringify
-                        ({
-                                username: user.value, 
-                                password: pass.value,
-                        })
+                method :"POST",
+                mode:"cors",
+                headers:
+                {
+                    'Content-Type': 'application/json',
+                },
+                    "method":"POST",
+                    "body" : JSON.stringify
+                    ({
+                            username: user.value, 
+                            password: pass.value,
+                    })
             });
             if (res.ok) 
             {
                 const data = await res.json();
-                document.cookie = `refresh=${data.refresh}; path=/`;
-                document.cookie = `access=${data.access}; path=/`;
+                document.cookie = `refresh=${data.refresh}; path=/; Secure; SameSite=None;`;
+                document.cookie = `access=${data.access}; path=/; SameSite=None; Secure`;
+                document.cookie = `username=${user.value}; path=/; SameSite=None; Secure`;
                 window.location.hash = "#dashboard";
             } 
             else 
             {
-
+                return res.json().then(data => 
+                {
+                    alert(data.detail);
+                });
             }
         })
         intraButton.addEventListener('click', async function(event) {
@@ -71,8 +75,6 @@ class signin extends HTMLElement{
         
             window.location.href = "http://127.0.0.1:8000/login42/";
         });
-        
-
 }
 }
 customElements.define('signin-component', signin);

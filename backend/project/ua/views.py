@@ -72,8 +72,7 @@ def logout(req):
     except Exception as e:
         return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def test(req):
-    return Response({"detail": "You are authenticated !"}, status=status.HTTP_200_OK)
-
+# @api_view(['POST'])
+# @permission_classes([IsAuthenticated])
+# def check_token(req):
+#     return Response({"detail": "You are authenticated !"}, status=status.HTTP_200_OK)

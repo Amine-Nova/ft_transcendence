@@ -1,18 +1,64 @@
 import route from "./route.js";
 
-
 console.log(route)
 
-function getCookie(name) {
+function getCookie(name) 
+{
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
     return null;
 }
 
-function isAuthenticated() {
+function isAuthenticated() 
+{
     const token = getCookie('access');
     return token !== null;
+}
+
+function deleteCookie(name) 
+{
+    document.cookie = `${name}=; expires=Thu, 20 Sep 2001 00:00:00 UTC; path=/;`;
+}
+
+async function refreshAccessToken() 
+{
+    const res = await fetch('http://127.0.0.1:8000/token-refresh/', {
+        method :"POST",
+        mode:"cors",
+        headers:
+        {
+            'Content-Type': 'application/json',
+        },
+        "body" : JSON.stringify
+        ({
+            refresh: getCookie('refresh'),
+        })
+    });
+    if (!res.ok) 
+    {
+        console.error('Failed to refresh token. Logging out...');
+        deleteCookie('access');
+        window.location.hash = "#signin";
+        return;
+    }
+    const data = await res.json();
+    if (data.access)
+    {
+        document.cookie = "access_token=" + data.access + ";path=/";
+    }
+    else 
+    {    
+        console.error('Failed to refresh token. Logging out...');
+        deleteCookie('access'); 
+        window.location.hash = "#signin";
+    }
+}
+
+function startTokenRefreshTimer() {
+    setTimeout(() => {
+        refreshAccessToken();
+    }, 30 * 60 * 1000);
 }
 
 function navigate(){
@@ -20,17 +66,20 @@ function navigate(){
     const path = window.location.hash.substring(1);
     const page = route[path];
     const container = document.getElementById('container');
-    if (isAuthenticated()) {
+    if (isAuthenticated() && page !== "signup-component" && page !== "signin-component") {
         container.innerHTML = `<${page}></${page}>`;
     }
-    else if (page !== "signup-component" && page !== "signin-component") {
+    else if (isAuthenticated() && (page === "signup-component" || page === "signin-component"))
+        window.location.hash = "#dashboard";
+    else if (page !== "signup-component" && page !== "signin-component" && page !== "home-component")
+    {
         window.location.hash = '#signin';
         alert('You must be logged in to access this page.');
     }
     else 
         container.innerHTML = `<${page}></${page}>`;
-    if (isAuthenticated() && (page === "signup-component" || page === "signin-component"))
-        window.location.hash = "#dashboard";
+    if (isAuthenticated())
+        startTokenRefreshTimer();
 }
 
 
