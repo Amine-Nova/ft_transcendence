@@ -13,7 +13,7 @@
     "Username": "ⵉⵙⵏⵉ ⵏ ⵓⵙⵏⴰⵏ",
     "Confirm Password": "ⵜⴰⵙⵏⵉⴷ ⵏ ⵜⵙⵉⵏⵓⵙⵏ",
     "Offline": "ⵜⵓⵜⵖⴰⵍⵉ",
-    "Tournament": "ⵜⵉⵎⵓⵔⵏⴰⵎⴻⵏⵜ",
+    "Pong Tournament": "ⵜⵓⵜⴳⵍⵉ ⴷ ⴱⵓⵏⵖ",
     "Play Pong": "ⵉⵙⵏⵉ ⵜⵓⵜⴳⵍⵉ ⴷ ⴱⵓⵏⵖ",
     "Player Registration": "ⴰⵎⴰⴷⴷⵓⵔ ⵉⵙⵏⵉⵏ",
     "First Player Name": "ⴰⵎⴷⵓⵔ ⵏ ⵓⵙⵏⵉ ⵉⵖⵔⵉ",
@@ -29,5 +29,6 @@
     "Return to Dashboard": "ⵎⵏⵏⵔ ⴳ ⵜⴰⴱⵉⵏⵜ ⴷⵏⴰⵔ",
     "Enter your name": "ⵉⵏⵓⵅⴻⵏ ⵜⵏⴰⵖⵉⵏⵜ ⵏ ⵓⵙⵏⴰⵏ",
     "Join Queue": "ⵜⵉⵏⴳⵓⵍ ⴳ ⵜⵉⵎⵉⵏ",
-    "Logout": "ⵜⵓⵜⵖⵍⵉ ⵏ ⵓⵙⵏⴰⵏ"
+    "Logout": "ⵜⵓⵜⵖⵍⵉ ⵏ ⵓⵙⵏⴰⵏ",
+    "Multiplayer": "ⵜⵓⵜⴳⵍⵉ ⴷ ⵜⵓⵜⴳⵍⵉⵏ ⵏⴽⵔⵔⵏ"
 }

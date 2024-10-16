@@ -13,7 +13,7 @@
     "Sign Up": "التسجيل",
     "Log in": "تسجيل الدخول",
     "Offline": "الغير متصل",
-    "Tournament": "البطولة",
+    "Pong Tournament": "بطولة بونج",
     "Play Pong": "العب بونج",
     "Player Registration": "تسجيل اللاعب",
     "First Player Name": "اسم اللاعب الأول",
@@ -29,5 +29,6 @@
     "Return to Dashboard": "العودة إلى لوحة التحكم",
     "Enter your name": "أدخل اسمك",
     "Join Queue": "انضم إلى قائمة الانتظار" ,
-    "Logout": "تسجيل الخروج"
+    "Logout": "تسجيل الخروج",
+    "Multiplayer": "العب مع لاعبين آخرين"
 }

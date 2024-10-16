@@ -13,7 +13,7 @@
     "Sign Up":"Sign Up",
     "Log in":"Log in",
     "Offline" : "Offline",
-    "Tournament" : "Tournament",
+    "Pong Tournament": "Pong Tournament",
     "Play Pong": "Play Pong",
     "Player Registration": "Player Registration",
     "First Player Name": "First Player Name",
@@ -29,5 +29,6 @@
     "Return to Dashboard": "Return to Dashboard",
     "Enter your name": "Enter your name",
     "Join Queue": "Join Queue",
-    "Logout": "Logout"
+    "Logout": "Logout",
+    "Multiplayer": "Multiplayer"
 }

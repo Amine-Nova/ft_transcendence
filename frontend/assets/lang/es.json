@@ -13,7 +13,7 @@
     "Sign Up": "Registrarse",
     "Log in": "Iniciar sesión",
     "Offline" : "Sin conexión",
-    "Tournament" : "Torneo",
+    "Pong Tournament": "Torneo de Pong",
     "Play Pong": "Jugar Pong",
     "Player Registration": "Registro de jugador",
     "First Player Name": "Nombre del primer jugador",
@@ -29,5 +29,6 @@
     "Return to Dashboard": "Volver al panel de control",
     "Enter your name": "Ingresa tu nombre",
     "Join Queue": "Unirse a la cola",
-    "Logout": "Cerrar sesión"
+    "Logout": "Cerrar sesión",
+    "Multiplayer": "Multijugador"
 }

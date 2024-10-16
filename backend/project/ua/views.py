@@ -10,7 +10,6 @@ from .serializers import UserSerializer
 from rest_framework import status
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
-# Create your views here.
 
 def set_token_cookies(response, refresh_token, access_token):
     response.set_cookie(
@@ -72,7 +71,7 @@ def logout(req):
     except Exception as e:
         return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-# @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-# def check_token(req):
-#     return Response({"detail": "You are authenticated !"}, status=status.HTTP_200_OK)
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def check_token(req):
+    return Response({"detail": "You are authenticated !"}, status=status.HTTP_200_OK)

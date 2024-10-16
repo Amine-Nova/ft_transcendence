@@ -52,7 +52,7 @@ class signin extends HTMLElement{
                 alert("please fill all fields");
                 return;
             }
-            const res = await fetch("http://127.0.0.1:8000/login/", 
+            const res = await fetch("https://0.0.0.0:8000/login/", 
             {
                 method :"POST",
                 mode:"cors",
@@ -70,7 +70,7 @@ class signin extends HTMLElement{
             if (res.ok) 
             {
                 const data = await res.json();
-                document.cookie = `refresh=${data.refresh}; path=/; Secure; SameSite=None;`;
+                document.cookie = `refresh=${data.refresh}; path=/; SameSite=None; Secure`;
                 document.cookie = `access=${data.access}; path=/; SameSite=None; Secure`;
                 document.cookie = `username=${user.value}; path=/; SameSite=None; Secure`;
                 window.location.hash = "#dashboard";
@@ -86,7 +86,7 @@ class signin extends HTMLElement{
         intraButton.addEventListener('click', async function(event) {
             event.preventDefault();
         
-            window.location.href = "http://127.0.0.1:8000/login42/";
+            window.location.href = "https://0.0.0.0:8000/login42/";
         });
 }
 }

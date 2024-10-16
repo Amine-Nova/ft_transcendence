@@ -64,7 +64,7 @@ class signup extends HTMLElement{
                 return;
             }
             try {
-                const res = await fetch("http://127.0.0.1:8000/signup/", {
+                const res = await fetch("https://0.0.0.0:8000/signup/", {
                     method: "POST",
                     mode: "cors",
                     headers: {

@@ -1,6 +1,7 @@
+import { CheckAuthenticated } from "./func.js";
 class dashboard extends HTMLElement
 {
-    connectedCallback()
+    async connectedCallback()
     {
         const getCookieValue = (name) => {
             const value = `; ${document.cookie}`;
@@ -31,8 +32,8 @@ class dashboard extends HTMLElement
         <p class="btn" id="username">${username}</p>
         <div class="main-container">
             <div class="content">
-            <a href="#game" class="btn" data-i18n="Offline"></a>
-            <a href="" class="btn" data-i18n="Tournament"></a>
+            <a href="#multiplayer" class="btn" data-i18n="Multiplayer"></a>
+            <a href="#tournament" class="btn" data-i18n="Pong Tournament"></a>
             <a href="#pong" class="btn" data-i18n="Play Pong"></a>  
             </div>
         </div>
@@ -40,16 +41,16 @@ class dashboard extends HTMLElement
         changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         function deleteCookie(name) {
             document.cookie = `${name}=; expires=Thu, 20 Sep 2001 00:00:00 UTC; path=/;`;
-          }
-          
+        }
+        await CheckAuthenticated();
         let submitBuuton = document.getElementById("log");
         submitBuuton.addEventListener('click', async function(event)
         {
             event.preventDefault();
-            const res = await fetch("http://127.0.0.1:8000/logout/", 
+            const res = await fetch("https://0.0.0.0:8000/logout/", 
             {
-                    method :"POST",
-
+                method :"POST",
+                
             }).then(response => {
                 if (response.ok)
                 {

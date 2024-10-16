@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-t7c2p1=ed!)*hj+p^w!+qlns7%-p&xfe)1ff)&7vf^6)sqm)%f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["0.0.0.0"]
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ua',
     'login42',
-    # 'login42.apps.Login42Config',
+    "sslserver",
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
@@ -62,9 +62,10 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://localhost:443",
-    "https://127.0.0.1:443",
     "https://127.0.0.1",
+    "https://localhost:443",
+    "https://0.0.0.0:443",
+    "https://0.0.0.0",
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -89,18 +90,17 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'ua.authentication.CustomJWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=90),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=20),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=2),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": False,
     "AUTH_HEADER_TYPES": ("Bearer",),
-
     "ALGORITHM": "HS256",
     "VERIFYING_KEY": "",
     "AUDIENCE": None,

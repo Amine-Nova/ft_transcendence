@@ -13,7 +13,7 @@
     "Sign Up": "サインアップ",
     "Log in": "ログイン",
     "Offline" : "オフライン",
-    "Tournament" : "トーナメント",
+    "Pong Tournament": "ポン大会",
     "Play Pong": "ポンをプレイする",
     "Player Registration": "プレイヤー登録",
     "First Player Name": "最初のプレイヤー名",
@@ -29,5 +29,6 @@
     "Return to Dashboard": "ダッシュボードに戻る",
     "Enter your name": "名前を入力",
     "Join Queue": "キューに参加",
-    "Logout": "ログアウト"
+    "Logout": "ログアウト",
+    "Multiplayer": "マルチプレイヤー"
 }

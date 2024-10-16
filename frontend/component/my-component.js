@@ -1,4 +1,5 @@
 import route from "./route.js";
+import { CheckAuthenticated } from "./func.js";
 
 console.log(route)
 
@@ -21,48 +22,9 @@ function deleteCookie(name)
     document.cookie = `${name}=; expires=Thu, 20 Sep 2001 00:00:00 UTC; path=/;`;
 }
 
-async function refreshAccessToken() 
-{
-    const res = await fetch('http://0.0.0.0:8000/token-refresh/', {
-        method :"POST",
-        mode:"cors",
-        headers:
-        {
-            'Content-Type': 'application/json',
-        },
-        "body" : JSON.stringify
-        ({
-            refresh: getCookie('refresh'),
-        })
-    });
-    if (!res.ok) 
-    {
-        console.error('Failed to refresh token. Logging out...');
-        deleteCookie('access');
-        window.location.hash = "#signin";
-        return;
-    }
-    const data = await res.json();
-    if (data.access)
-    {
-        document.cookie = "access_token=" + data.access + ";path=/";
-    }
-    else 
-    {    
-        console.error('Failed to refresh token. Logging out...');
-        deleteCookie('access'); 
-        window.location.hash = "#signin";
-    }
-}
 
-function startTokenRefreshTimer() {
-    setTimeout(() => {
-        refreshAccessToken();
-    }, 30 * 60 * 1000);
-}
-
-function navigate(){
-
+async function navigate(){
+    await CheckAuthenticated();
     const path = window.location.hash.substring(1);
     const page = route[path];
     const container = document.getElementById('container');
@@ -78,10 +40,53 @@ function navigate(){
     }
     else 
         container.innerHTML = `<${page}></${page}>`;
-    if (isAuthenticated())
-        startTokenRefreshTimer();
 }
 
 
 window.addEventListener("hashchange", navigate);
 window.addEventListener("DOMContentLoaded", navigate);
+
+
+
+
+// ############################################################################################################
+
+// async function refreshAccessToken() 
+// {
+//     const res = await fetch('http://0.0.0.0:8000/token-refresh/', {
+//         method :"POST",
+//         mode:"cors",
+//         headers:
+//         {
+//             'Content-Type': 'application/json',
+//         },
+//         "body" : JSON.stringify
+//         ({
+//             refresh: getCookie('refresh'),
+//         })
+//     });
+//     if (!res.ok) 
+//     {
+//         console.error('Failed to refresh token. Logging out...');
+//         deleteCookie('access');
+//         window.location.hash = "#signin";
+//         return;
+//     }
+//     const data = await res.json();
+//     if (data.access)
+//     {
+//         document.cookie = "access_token=" + data.access + ";path=/";
+//     }
+//     else 
+//     {    
+//         console.error('Failed to refresh token. Logging out...');
+//         deleteCookie('access'); 
+//         window.location.hash = "#signin";
+//     }
+// }
+
+// function startTokenRefreshTimer() {
+//     setTimeout(() => {
+//         refreshAccessToken();
+//     }, 30 * 60 * 1000);
+// }
