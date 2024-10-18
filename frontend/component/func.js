@@ -52,10 +52,14 @@ export async function CheckAuthenticated()
             return true;
         }
         else
+        {
+            console.log('Not Authenticated');
             return false;
+        }
     }
     else
     {
         console.log('Authenticated');
+        return true;
     }
 }

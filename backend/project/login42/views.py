@@ -11,8 +11,8 @@ from ua.views import signup,login
 
 UID = "u-s4t2ud-675e5069bbc568c9524d521aa9274b1df90a0e67de4c026bf7f003f5899cbdb1"
 secret = "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"
-auth_url = "https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-675e5069bbc568c9524d521aa9274b1df90a0e67de4c026bf7f003f5899cbdb1&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Flogin42_redir%2F&response_type=code"
-REDIRECT_URI = 'http://127.0.0.1:8000/login42_redir/'
+auth_url = "https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-675e5069bbc568c9524d521aa9274b1df90a0e67de4c026bf7f003f5899cbdb1&redirect_uri=https%3A%2F%2F127.0.0.1%3A8000%2Flogin42_redir%2F&response_type=code"
+REDIRECT_URI = 'https://127.0.0.1:8000/login42_redir/'
 
 def login42(request: HttpRequest):
 	return redirect(auth_url)
