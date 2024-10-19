@@ -9,4 +9,5 @@ urlpatterns = [
     path('signup/', views.signup),
     path('token-refresh/', TokenRefreshView.as_view(), name='token-refresh'),
     path('check/', views.check_token),
+    path('lang/', views.lang),
 ]

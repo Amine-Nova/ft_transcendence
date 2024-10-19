@@ -42,7 +42,11 @@ class signin extends HTMLElement{
         let submitBuuton = document.getElementById("log");
         let intraButton = document.getElementById("intra");
         
-        
+        const getCookieValue = (name) => {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        };
         submitBuuton.addEventListener('click', async function(event)
         {
             console.log(user.value);
@@ -63,8 +67,8 @@ class signin extends HTMLElement{
                     "method":"POST",
                     "body" : JSON.stringify
                     ({
-                            username: user.value, 
-                            password: pass.value,
+                        username: user.value, 
+                        password: pass.value,
                     })
             });
             if (res.ok) 
@@ -73,6 +77,8 @@ class signin extends HTMLElement{
                 document.cookie = `refresh=${data.refresh}; path=/; SameSite=None; Secure`;
                 document.cookie = `access=${data.access}; path=/; SameSite=None; Secure`;
                 document.cookie = `username=${user.value}; path=/; SameSite=None; Secure`;
+                document.cookie = `language=${data.language}; path=/; SameSite=None; Secure`;
+                changeLanguage(data.language);
                 window.location.hash = "#dashboard";
             } 
             else 

@@ -12,6 +12,15 @@ class dashboard extends HTMLElement
         const username = getCookieValue('username') || 'Guest';
 
         this.innerHTML = `
+        <label for="pet-select">Choose your Preferable Language:</label>
+        <select>
+        <option value="">--Please choose an option--</option>
+        <option id="English">English</option>
+        <option id="Arabic">Arabic</option>
+        <option id="Spanish">Spanish</option>
+        <option id="Japanese">Japanese</option>
+        <option id="Tamazight">Tamazight</option>
+        </select>
         <header>
             <nav>
                 <ul>
@@ -44,6 +53,94 @@ class dashboard extends HTMLElement
         }
         await CheckAuthenticated();
         let submitBuuton = document.getElementById("log");
+        let english = document.getElementById("English");
+        let arabic = document.getElementById("Arabic");
+        let spanish = document.getElementById("Spanish");
+        let japanese = document.getElementById("Japanese");
+        let tamazight = document.getElementById("Tamazight");
+        english.addEventListener('click', async function(event)
+        {
+            const res = await fetch("https://0.0.0.0:8000/lang/",
+            {
+                method :"PUT",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    language: 'en'
+                })
+
+            })
+            document.cookie = `language=en; path=/; SameSite=None; Secure`;
+            changeLanguage('en');
+        });
+        arabic.addEventListener('click', async function(event)
+        {
+            const res = await fetch("https://0.0.0.0:8000/lang/",
+            {
+                method :"PUT",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    language: 'ar'
+                })
+            })
+            document.cookie = `language=ar; path=/; SameSite=None; Secure`;
+            changeLanguage('ar');
+        });
+        spanish.addEventListener('click', async function(event)
+        {
+            const res = await fetch("https://0.0.0.0:8000/lang/",
+            {
+                method :"PUT",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    language: 'es'
+                })
+            })
+            document.cookie = `language=es; path=/; SameSite=None; Secure`;
+            changeLanguage('es');
+        });
+        japanese.addEventListener('click', async function(event)
+        {
+            const res = await fetch("https://0.0.0.0:8000/lang/",
+            {
+                method :"PUT",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    language: 'jap'
+                })
+            })
+            document.cookie = `language=jap; path=/; SameSite=None; Secure`;
+            changeLanguage('jap');
+        });
+        tamazight.addEventListener('click', async function(event)
+        {
+            const res = await fetch("https://0.0.0.0:8000/lang/",
+            {
+                method :"PUT",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    language: 'tmz'
+                })
+            })
+            document.cookie = `language=tmz; path=/; SameSite=None; Secure`;
+            changeLanguage('tmz');
+        });
+        let lang = getCookieValue('language')
+        changeLanguage(lang);
         submitBuuton.addEventListener('click', async function(event)
         {
             event.preventDefault();
@@ -57,6 +154,7 @@ class dashboard extends HTMLElement
                     deleteCookie('access');
                     deleteCookie('refresh');
                     deleteCookie('username');
+                    deleteCookie('language');
                     localStorage.clear();
                     window.location.hash = "#signin";
                 } 

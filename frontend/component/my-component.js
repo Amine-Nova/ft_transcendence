@@ -35,8 +35,13 @@ async function navigate(){
         window.location.hash = "#dashboard";
     else if (page !== "signup-component" && page !== "signin-component" && page !== "home-component")
     {
-        window.location.hash = '#signin';
-        alert('You must be logged in to access this page.');
+        if(await CheckAuthenticated())
+            container.innerHTML = `<${page}></${page}>`;
+        else
+        {
+            window.location.hash = '#signin';
+            alert('You must be logged in to access this page.');
+        }
     }
     else 
         container.innerHTML = `<${page}></${page}>`;

@@ -34,7 +34,8 @@ def login(req):
     refresh = RefreshToken.for_user(user)
     response =  Response({
         "access": str(refresh.access_token),
-        "refresh": str(refresh)
+        "refresh": str(refresh),
+        "language": user.first_name
     }, status=status.HTTP_200_OK)
     set_token_cookies(response, str(refresh), str(refresh.access_token))
     return response
@@ -50,6 +51,7 @@ def signup(req):
         serializer.save()
         user = User.objects.get(username=req.data['username'])
         user.set_password(req.data['password'])
+        user.first_name = "eng"
         user.save()
         return Response({"user": serializer.data})
     return Response(serializer.errors)
@@ -75,3 +77,21 @@ def logout(req):
 @permission_classes([IsAuthenticated])
 def check_token(req):
     return Response({"detail": "You are authenticated !"}, status=status.HTTP_200_OK)
+
+@api_view(['PUT'])
+def lang(req):
+    user = get_object_or_404(User, username=req.data['username'])
+    new_first_name = req.data.get('language')
+
+    if not new_first_name:
+        return Response({"error": "language is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+    user.first_name = new_first_name
+    user.save()
+    response = Response({"message": "language updated successfully", "first_name": user.first_name})
+    response.set_cookie(
+        key='language',
+        value=new_first_name,
+        samesite='None',
+    )
+    return response

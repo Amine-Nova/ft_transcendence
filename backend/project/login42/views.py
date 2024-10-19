@@ -66,7 +66,7 @@ def login42_redir(request):
             username=username,
             defaults={
                 'email': user_info.get('email'),
-                'first_name': user_info.get('first_name'),
+                'first_name': "eng",
                 'last_name': user_info.get('last_name'),
             }
         )
@@ -85,6 +85,7 @@ def login42_redir(request):
         response.set_cookie(key='access', value=access_token)
         response.set_cookie(key='refresh', value=refresh_token)
         response.set_cookie(key='username', value=username)
+        response.set_cookie(key='language', value=User.objects.get(username=username).first_name)
 
         response['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
         response['Pragma'] = 'no-cache'
