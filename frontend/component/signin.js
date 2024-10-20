@@ -1,17 +1,6 @@
 class signin extends HTMLElement{
     connectedCallback(){
         this.innerHTML = `
-        <header>
-        <nav>
-            <ul>
-                <li><a href="#signin" onclick="changeLanguage('en')">English</a></li>
-                <li><a href="#signin" onclick="changeLanguage('ar')">Arabic</a></li>
-                <li><a href="#signin" onclick="changeLanguage('es')">Spanish</a></li>
-                <li><a href="#signin" onclick="changeLanguage('jap')">Japanese</a></li>
-                <li><a href="#signin" onclick="changeLanguage('tmz')">Tamazight</a></li>
-            </ul>
-        </nav>
-        </header>
         <div class="login-container">
             <h1 class="login-title" data-i18n="Login"></h1>
             <form action="#" method="POST" class="login-form">

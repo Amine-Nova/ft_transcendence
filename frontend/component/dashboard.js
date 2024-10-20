@@ -21,17 +21,6 @@ class dashboard extends HTMLElement
         <option id="Japanese">Japanese</option>
         <option id="Tamazight">Tamazight</option>
         </select>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="#dashboard" onclick="changeLanguage('en')">English</a></li>
-                    <li><a href="#dashboard" onclick="changeLanguage('ar')">Arabic</a></li>
-                    <li><a href="#dashboard" onclick="changeLanguage('es')">Spanish</a></li>
-                    <li><a href="#dashboard" onclick="changeLanguage('jap')">Japanese</a></li>
-                    <li><a href="#dashboard" onclick="changeLanguage('tmz')">Tamazight</a></li>
-                </ul>
-            </nav>
-        </header>
         <div class="header">
         <div class="content">
             <button class="btn" id="log" data-i18n="Logout"></button>

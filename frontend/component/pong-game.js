@@ -34,17 +34,6 @@ class PongGame extends HTMLElement {
 
     showRegistrationPopup() {
         this.innerHTML = `
-            <header>
-            <nav>
-                <ul>
-                    <li><a href="#pong" onclick="changeLanguage('en')">English</a></li>
-                    <li><a href="#pong" onclick="changeLanguage('ar')">Arabic</a></li>
-                    <li><a href="#pong" onclick="changeLanguage('es')">Spanish</a></li>
-                    <li><a href="#pong" onclick="changeLanguage('jap')">Japanese</a></li>
-                    <li><a href="#pong" onclick="changeLanguage('tmz')">Tamazight</a></li>
-                </ul>
-            </nav>
-        </header>
         <div class="login-container">
             <h2 data-i18n="Player Registration"></h2>
             <div class="form-group">

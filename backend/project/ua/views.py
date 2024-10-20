@@ -50,8 +50,8 @@ def signup(req):
     if serializer.is_valid():
         serializer.save()
         user = User.objects.get(username=req.data['username'])
+        user.first_name = "en"
         user.set_password(req.data['password'])
-        user.first_name = "eng"
         user.save()
         return Response({"user": serializer.data})
     return Response(serializer.errors)
