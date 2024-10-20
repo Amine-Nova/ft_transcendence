@@ -35,7 +35,8 @@ def login(req):
     response =  Response({
         "access": str(refresh.access_token),
         "refresh": str(refresh),
-        "language": user.first_name
+        "language": user.first_name,
+        "2fa": user.last_name
     }, status=status.HTTP_200_OK)
     set_token_cookies(response, str(refresh), str(refresh.access_token))
     return response
@@ -51,6 +52,7 @@ def signup(req):
         serializer.save()
         user = User.objects.get(username=req.data['username'])
         user.first_name = "en"
+        user.last_name = "f"
         user.set_password(req.data['password'])
         user.save()
         return Response({"user": serializer.data})
@@ -95,3 +97,21 @@ def lang(req):
         samesite='None',
     )
     return response
+
+@api_view(['PUT'])
+def fact(req):
+    user = get_object_or_404(User, username=req.data['username'])
+    new_value = req.data.get('fact')
+
+    if not new_value:
+        return Response({"error": "value is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+    user.last_name = new_value
+    user.save()
+    response = Response({"message": "value updated successfully", "fact": user.last_name})
+    return response
+
+@api_view(['POST'])
+def get_tf(req):
+    user = get_object_or_404(User, username=req.data['username'])
+    return Response({"fda": user.last_name})

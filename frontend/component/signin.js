@@ -1,6 +1,8 @@
 class signin extends HTMLElement{
     connectedCallback(){
+
         this.innerHTML = `
+        </div>
         <div class="login-container">
             <h1 class="login-title" data-i18n="Login"></h1>
             <form action="#" method="POST" class="login-form">
@@ -31,21 +33,9 @@ class signin extends HTMLElement{
         let submitBuuton = document.getElementById("log");
         let intraButton = document.getElementById("intra");
         
-        const getCookieValue = (name) => {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-        };
         submitBuuton.addEventListener('click', async function(event)
         {
-            console.log(user.value);
-            event.preventDefault();
-            if (user.value == "" || pass.value == "")
-            {
-                alert("please fill all fields");
-                return;
-            }
-            const res = await fetch("https://0.0.0.0:8000/login/", 
+            const resp = await fetch("https://0.0.0.0:8000/tf/",
             {
                 method :"POST",
                 mode:"cors",
@@ -56,19 +46,50 @@ class signin extends HTMLElement{
                     "method":"POST",
                     "body" : JSON.stringify
                     ({
-                        username: user.value, 
-                        password: pass.value,
+                        username : user.value,
                     })
             });
+            const fda = await resp.json();
+            console.log(fda.fda);
+            event.preventDefault();
+            if (user.value == "" || pass.value == "")
+            {
+                alert("please fill all fields");
+                return;
+            }
+            let fa = false;
+            if (fda.fda === "t")
+                fa = true;
+            let url = fa ? "https://0.0.0.0:8000/login2fa/" : "https://0.0.0.0:8000/login/";
+            let page = fa ? "#verify" : "#dashboard";
+
+            const res = await fetch(url, 
+            {
+                method :"POST",
+                mode:"cors",
+                headers:
+                {
+                    'Content-Type': 'application/json',
+                },
+                    "method":"POST",
+                    "body" : JSON.stringify
+                    ({
+                            username: user.value, 
+                            password: pass.value,
+                    })
+                });
             if (res.ok) 
             {
                 const data = await res.json();
-                document.cookie = `refresh=${data.refresh}; path=/; SameSite=None; Secure`;
-                document.cookie = `access=${data.access}; path=/; SameSite=None; Secure`;
                 document.cookie = `username=${user.value}; path=/; SameSite=None; Secure`;
-                document.cookie = `language=${data.language}; path=/; SameSite=None; Secure`;
+                if (!fa)
+                {
+                    document.cookie = `refresh=${data.refresh}; path=/; SameSite=None; Secure`;
+                    document.cookie = `access=${data.access}; path=/; SameSite=None; Secure`;
+                    document.cookie = `language=${data.language}; path=/; SameSite=None; Secure`;
+                }
                 changeLanguage(data.language);
-                window.location.hash = "#dashboard";
+                window.location.hash = page;
             } 
             else 
             {
@@ -80,7 +101,7 @@ class signin extends HTMLElement{
         })
         intraButton.addEventListener('click', async function(event) {
             event.preventDefault();
-        
+
             window.location.href = "https://0.0.0.0:8000/login42/";
         });
 }

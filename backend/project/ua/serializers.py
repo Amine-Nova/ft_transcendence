@@ -6,7 +6,7 @@ class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required=True)
     class Meta(object):
         model = User
-        fields = ['id', 'username', 'password', 'email', 'first_name']
+        fields = ['id', 'username', 'password', 'email', 'first_name', 'last_name']
 
     def validate_email(self, value):
         if User.objects.filter(email=value).exists():
@@ -23,6 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
             username=validated_data['username'],
             email=validated_data['email'],
             first_name="eng",
+            last_name="f"
         )
         user.set_password(validated_data['password']) 
         user.save()

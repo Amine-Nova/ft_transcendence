@@ -6,7 +6,7 @@ const route= {
     'multiplayer':'pong-multiplayer',
     'pong': 'pong-game' ,
     'tournament': 'pong-tournament',
-
+    'verify':'verify-component'
 }
 
 export default route

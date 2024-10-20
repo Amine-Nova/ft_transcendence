@@ -1,13 +1,9 @@
 from django.shortcuts import redirect
 from django.http import HttpRequest, HttpResponse, JsonResponse
-
-import requests
-
-from .models import User
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
-
-from ua.views import signup,login
+import requests
+from ua.views import set_token_cookies
 
 UID = "u-s4t2ud-675e5069bbc568c9524d521aa9274b1df90a0e67de4c026bf7f003f5899cbdb1"
 secret = "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"
@@ -67,7 +63,7 @@ def login42_redir(request):
             defaults={
                 'email': user_info.get('email'),
                 'first_name': "eng",
-                'last_name': user_info.get('last_name'),
+                'last_name': "f",
             }
         )
 

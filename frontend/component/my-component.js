@@ -33,7 +33,7 @@ async function navigate(){
     }
     else if (isAuthenticated() && (page === "signup-component" || page === "signin-component"))
         window.location.hash = "#dashboard";
-    else if (page !== "signup-component" && page !== "signin-component" && page !== "home-component")
+    else if (page !== "signup-component" && page !== "signin-component" && page !== "home-component" && page !== "verify-component")
     {
         if(await CheckAuthenticated())
             container.innerHTML = `<${page}></${page}>`;

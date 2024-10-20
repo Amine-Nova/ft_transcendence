@@ -8,10 +8,27 @@ class dashboard extends HTMLElement
             const parts = value.split(`; ${name}=`);
             if (parts.length === 2) return parts.pop().split(';').shift();
         };
-
         const username = getCookieValue('username') || 'Guest';
-
+        let fa;
+        const res = await fetch("https://0.0.0.0:8000/tf/",
+        {
+            method :"POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: username
+            })
+        })
+        const fda = await res.json();
+        if (fda.fda === "t")
+            fa = true;
+        else if (fda.fda === "f")
+            fa = false;
+        console.log(fa);
+        console.log(fda.fda);
         this.innerHTML = `
+        <button class="login-btn" id="2fa"> ${fa ? '2FA enabled' : '2FA disabled'}</button>
         <label for="pet-select">Choose your Preferable Language:</label>
         <select>
         <option value="">--Please choose an option--</option>
@@ -47,6 +64,7 @@ class dashboard extends HTMLElement
         let spanish = document.getElementById("Spanish");
         let japanese = document.getElementById("Japanese");
         let tamazight = document.getElementById("Tamazight");
+        let faButton = document.getElementById("2fa");
         english.addEventListener('click', async function(event)
         {
             const res = await fetch("https://0.0.0.0:8000/lang/",
@@ -130,6 +148,33 @@ class dashboard extends HTMLElement
         });
         let lang = getCookieValue('language')
         changeLanguage(lang);
+
+        /* ####################################################### */
+
+        faButton.addEventListener('click', async function(event) {
+            event.preventDefault();
+            fa = !fa
+            let c;
+            if (fa)
+                c = "t";
+            else if (fa === false)
+                c = "f";
+            faButton.textContent = fa ? '2FA enabled' : '2FA disabled';
+            const res = await fetch("https://0.0.0.0:8000/2fa/",
+            {
+                method :"PUT",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    fact: c
+                })
+            })
+        });
+
+        /* ####################################################### */
+        
         submitBuuton.addEventListener('click', async function(event)
         {
             event.preventDefault();
