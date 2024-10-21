@@ -99,7 +99,7 @@ def lang(req):
     return response
 
 @api_view(['PUT'])
-def fact(req):
+def setfact(req):
     user = get_object_or_404(User, username=req.data['username'])
     new_value = req.data.get('fact')
 
@@ -112,6 +112,6 @@ def fact(req):
     return response
 
 @api_view(['POST'])
-def get_tf(req):
+def getfact(req):
     user = get_object_or_404(User, username=req.data['username'])
-    return Response({"fda": user.last_name})
+    return Response({"fact": user.last_name})

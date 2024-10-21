@@ -9,8 +9,8 @@ class dashboard extends HTMLElement
             if (parts.length === 2) return parts.pop().split(';').shift();
         };
         const username = getCookieValue('username') || 'Guest';
-        let fa;
-        const res = await fetch("https://0.0.0.0:8000/tf/",
+
+        const res = await fetch("https://0.0.0.0:8000/get2fa/",
         {
             method :"POST",
             headers: {
@@ -21,12 +21,11 @@ class dashboard extends HTMLElement
             })
         })
         const fda = await res.json();
-        if (fda.fda === "t")
+        let fa = false;
+        if (fda.fact === "t")
             fa = true;
-        else if (fda.fda === "f")
-            fa = false;
-        console.log(fa);
-        console.log(fda.fda);
+        console.log("2fa = ", fa, fda.fact);
+
         this.innerHTML = `
         <button class="login-btn" id="2fa"> ${fa ? '2FA enabled' : '2FA disabled'}</button>
         <label for="pet-select">Choose your Preferable Language:</label>
@@ -154,13 +153,11 @@ class dashboard extends HTMLElement
         faButton.addEventListener('click', async function(event) {
             event.preventDefault();
             fa = !fa
-            let c;
-            if (fa)
-                c = "t";
-            else if (fa === false)
-                c = "f";
+
+            let c = fa ? "t" : "f";
             faButton.textContent = fa ? '2FA enabled' : '2FA disabled';
-            const res = await fetch("https://0.0.0.0:8000/2fa/",
+
+            const res = await fetch("https://0.0.0.0:8000/set2fa/",
             {
                 method :"PUT",
                 headers: {

@@ -7,6 +7,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from ua.serializers import UserSerializer
 from ua.views import set_token_cookies
+
 from rest_framework import status
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
@@ -19,28 +20,41 @@ from django.core.mail import send_mail
 from django.utils import timezone
 from datetime import datetime, timedelta
 
-def send_otp(request):
-    username = request.data.get('username')
+def send_otp(username):
     if User.objects.filter(username=username).exists():
         user = User.objects.get(username=username)
         OtpToken.objects.create(user=user, otp_expires_at=timezone.now() + timezone.timedelta(minutes=5))
-
         otp = OtpToken.objects.filter(user=user).last()
 
+        print("---------------------------------------------------")
         print(f"one time password is {otp.otp_code}")
         print(f"sending to email :{user.email}")
-
+        print("---------------------------------------------------")
         subject = "Account Activation"
         message = f"""
-            Hi {user.username}, here is your OTP: {otp.otp_code}
-            it will expire in 5 minutes. use it to activate your account.
-            thanks.
+Hello, {user.username}
+Tendance
+
+Here's your code
+
+Your verification code is {otp.otp_code} and will expire in 5 minutes. For your security, use it to activate your account.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+Tendance is committed to preventing fraudulent emails. Emails from Tendance will always contain your full name. Learn to identify phishing
+Please don't reply to this email. To get in touch with us, click Help & Contact.
+Not sure why you received this email? Learn more...
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+Copyright © 1999-2024 Tendance. All rights reserved.
+Tendance Pte. Ltd. is licensed by the Monetary Authority of Morocco as a Major Payment Institution under the Payment Services Act 2019.
+Tendance (en_US(en-MA):1.0.0)
+
+Thanks.
             """
         sender = "tendance1337@gmail.com"
         receiver = [user.email]
 
         send_mail(subject, message, sender, receiver, fail_silently=False)
-
     else:
         return Response({"detail": "user not found"}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -77,29 +91,11 @@ def confirm_account(request):
 
 
 @api_view(['POST'])
-def login2fa(req):
-    user = get_object_or_404(User, username=req.data['username'])
-    if not user.check_password(req.data['password']):
+def login2fa(request):
+    user = get_object_or_404(User, username=request.data['username'])
+    if not user.check_password(request.data['password']):
         return Response({"detail": "Wrong Password !"}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
-    send_otp(req)
+    send_otp(username=request.data.get('username'))
 
     return (Response({}, status=status.HTTP_200_OK))
-
-@api_view(['POST'])
-def signup2fa(req):
-    if User.objects.filter(username=req.data['username']).exists():
-        return Response({"error": "Username already taken"}, status=status.HTTP_400_BAD_REQUEST)
-    if User.objects.filter(email=req.data['email']).exists():
-        return Response({"error": "Email already taken"}, status=status.HTTP_400_BAD_REQUEST)
-
-    send_otp(req)
-
-    serializer = UserSerializer(data=req.data)
-    if serializer.is_valid():
-        serializer.save()
-        user = User.objects.get(username=req.data['username'])
-        user.set_password(req.data['password'])
-        user.save()
-        return Response({"user": serializer.data})
-    return Response(serializer.errors)

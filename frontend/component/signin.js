@@ -35,7 +35,14 @@ class signin extends HTMLElement{
         
         submitBuuton.addEventListener('click', async function(event)
         {
-            const resp = await fetch("https://0.0.0.0:8000/tf/",
+            event.preventDefault();
+            if (user.value == "" || pass.value == "")
+            {
+                alert("please fill all fields");
+                return;
+            }
+
+            const resp = await fetch("https://0.0.0.0:8000/get2fa/",
             {
                 method :"POST",
                 mode:"cors",
@@ -50,16 +57,11 @@ class signin extends HTMLElement{
                     })
             });
             const fda = await resp.json();
-            console.log(fda.fda);
-            event.preventDefault();
-            if (user.value == "" || pass.value == "")
-            {
-                alert("please fill all fields");
-                return;
-            }
             let fa = false;
-            if (fda.fda === "t")
+            if (fda.fact === "t")
                 fa = true;
+            console.log("2fa = ", fa, fda.fact);
+            
             let url = fa ? "https://0.0.0.0:8000/login2fa/" : "https://0.0.0.0:8000/login/";
             let page = fa ? "#verify" : "#dashboard";
 

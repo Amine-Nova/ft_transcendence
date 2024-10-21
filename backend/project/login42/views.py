@@ -3,7 +3,9 @@ from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 import requests
+
 from ua.views import set_token_cookies
+from doublefactor.views import send_otp
 
 UID = "u-s4t2ud-675e5069bbc568c9524d521aa9274b1df90a0e67de4c026bf7f003f5899cbdb1"
 secret = "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"
@@ -71,21 +73,30 @@ def login42_redir(request):
             print(f"New user {username} created.")
         else:
             print(f"User {username} already exists.")
+        
+        if user.last_name == "f":
+            refresh = RefreshToken.for_user(user)
+            access_token = str(refresh.access_token)
+            refresh_token = str(refresh)
 
-        refresh = RefreshToken.for_user(user)
-        access_token = str(refresh.access_token)
-        refresh_token = str(refresh)
+            response = HttpResponse(status=302)
 
-        response = HttpResponse(status=302)
+            response.set_cookie(key='access', value=access_token)
+            response.set_cookie(key='refresh', value=refresh_token)
+            response.set_cookie(key='username', value=username)
+            response.set_cookie(key='language', value=User.objects.get(username=username).first_name)
 
-        response.set_cookie(key='access', value=access_token)
-        response.set_cookie(key='refresh', value=refresh_token)
-        response.set_cookie(key='username', value=username)
-        response.set_cookie(key='language', value=User.objects.get(username=username).first_name)
+            response['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+            response['Pragma'] = 'no-cache'
+            response['Location'] = "https://127.0.0.1/#dashboard"
 
-        response['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
-        response['Pragma'] = 'no-cache'
-        response['Location'] = "https://127.0.0.1/#dashboard"
+        elif user.last_name == "t":
+            send_otp(username)
+
+            response = HttpResponse(status=302)
+            response.set_cookie(key='username', value=username)
+            response.set_cookie(key='language', value=User.objects.get(username=username).first_name)
+            response['Location'] = "https://127.0.0.1/#verify"
 
         return response
 

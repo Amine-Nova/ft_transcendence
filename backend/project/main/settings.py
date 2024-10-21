@@ -32,7 +32,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'tendance1337@gmail.com'
-EMAIL_HOST_PASSWORD = 'rduw nbim zwey uuab '
+EMAIL_HOST_PASSWORD = 'rduw nbim zwey uuab'
 
 
 # Application definition
@@ -44,15 +44,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ua',
-    'login42',
-    'doublefactor',
-    "sslserver",
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
-    "corsheaders",
     'rest_framework_simplejwt.token_blacklist',
+    'corsheaders',
+    'sslserver',
+    'ua',
+    'login42',
+    'doublefactor',
 ]
 
 
