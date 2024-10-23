@@ -26,6 +26,9 @@ def exchange_code_for_token(code: str):
         'grant_type': 'authorization_code'
     }
     response = requests.post(token_url, data=data)
+    print('------------------')
+    print(response.status_code)
+    print('------------------')
 
     if response.status_code != 200:
         print("Error during token exchange:", response.content)

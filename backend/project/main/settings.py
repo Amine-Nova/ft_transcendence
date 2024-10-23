@@ -72,8 +72,6 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "https://127.0.0.1",
     "https://localhost:443",
-    "http://0.0.0.0",
-    "http://0.0.0.0:8000",
     "https://0.0.0.0:443",
 ]
 
@@ -118,9 +116,6 @@ SIMPLE_JWT = {
     "JWK_URL": None,
     "LEEWAY": 0,
 }
-
-SSL_CERTIFICATE = os.path.join(BASE_DIR, 'abenmous.crt')
-SSL_KEY = os.path.join(BASE_DIR, 'abenmous.key')
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

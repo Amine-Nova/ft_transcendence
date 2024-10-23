@@ -25,17 +25,20 @@ function deleteCookie(name)
 
 async function navigate(){
     await CheckAuthenticated();
+    let refresh = getCookie('refresh');
     const path = window.location.hash.substring(1);
     const page = route[path];
     const container = document.getElementById('container');
-    if (isAuthenticated() && page !== "signup-component" && page !== "signin-component") {
+    if ((isAuthenticated()) && page !== "signup-component" && page !== "signin-component") {
         container.innerHTML = `<${page}></${page}>`;
     }
-    else if (isAuthenticated() && (page === "signup-component" || page === "signin-component"))
+    else if ((isAuthenticated()) && (page === "signup-component" || page === "signin-component"))
         window.location.hash = "#dashboard";
     else if (page !== "signup-component" && page !== "signin-component" && page !== "home-component" && page !== "verify-component")
     {
-        if(await CheckAuthenticated())
+        await CheckAuthenticated();
+        refresh = getCookie('refresh');
+        if (isAuthenticated() && refresh !== null)
             container.innerHTML = `<${page}></${page}>`;
         else
         {
@@ -43,8 +46,10 @@ async function navigate(){
             alert('You must be logged in to access this page.');
         }
     }
-    else 
+    else
+    {
         container.innerHTML = `<${page}></${page}>`;
+    }
 }
 
 

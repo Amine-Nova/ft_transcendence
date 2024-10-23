@@ -14,6 +14,7 @@ let access = getCookie('access');
 
 export async function CheckAuthenticated()
 {
+    console.log('Checking authentication...');
     const res = await fetch('https://0.0.0.0:8000/check/',
     {
         method: 'GET',
@@ -47,7 +48,6 @@ export async function CheckAuthenticated()
         else if (res.status === 200)
         {
             const data = await res.json();
-            console.log(data.access);
             document.cookie = `access=${data.access}; path=/; SameSite=None; Secure`;
             return true;
         }
