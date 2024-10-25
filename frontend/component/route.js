@@ -6,6 +6,7 @@ const route= {
     'multiplayer':'pong-multiplayer',
     'pong': 'pong-game' ,
     'tournament': 'pong-tournament',
+    'ai': 'ai-component' ,
     'verify':'verify-component'
 }
 

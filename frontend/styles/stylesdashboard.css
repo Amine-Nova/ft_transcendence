@@ -1,6 +1,6 @@
 /* Container for the welcome message */
 .main-container {
-	max-width: 400px;
+	max-width: 1200px;
 	position: relative; /* Required for pseudo-element */
 	padding: 200px;
 	border-radius: 15px;

@@ -49,6 +49,7 @@ class dashboard extends HTMLElement
             <a href="#multiplayer" class="btn" data-i18n="Multiplayer"></a>
             <a href="#tournament" class="btn" data-i18n="Pong Tournament"></a>
             <a href="#pong" class="btn" data-i18n="Play Pong"></a>  
+            <a href="#ai" class="btn" >AI Mode</a>
             </div>
         </div>
         `;
@@ -198,6 +199,12 @@ class dashboard extends HTMLElement
                 console.error(error);
             })
         });
+    }
+    clearTournamentData() {
+        localStorage.removeItem('pongTournamentState');
+        localStorage.removeItem('pongTournamentMode');
+        localStorage.removeItem('pongPlayer1Name');
+        localStorage.removeItem('pongPlayer2Name');
     }
 }
 customElements.define('dashboard-component', dashboard);
