@@ -19,15 +19,32 @@ from .models import OtpToken
 from django.core.mail import send_mail
 from django.utils import timezone
 from datetime import datetime, timedelta
+import secrets
+
+
+@api_view(['POST'])
+def login2fa(request):
+    user = get_object_or_404(User, username=request.data['username'])
+    if not user.check_password(request.data['password']):
+        return Response({"detail": "Wrong Password !"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+
+    send_otp(username=request.data.get('username'))
+
+    return (Response({}, status=status.HTTP_200_OK))
 
 def send_otp(username):
     if User.objects.filter(username=username).exists():
         user = User.objects.get(username=username)
-        OtpToken.objects.create(user=user, otp_expires_at=timezone.now() + timezone.timedelta(minutes=5))
-        otp = OtpToken.objects.filter(user=user).last()
+
+        otp = OtpToken.objects.create(
+            user=user,
+            otp_code=secrets.token_hex(3),
+            otp_expires_at=timezone.now() + timezone.timedelta(minutes=3)
+        )
 
         print("---------------------------------------------------")
         print(f"one time password is {otp.otp_code}")
+        print(f"expires at {otp.otp_expires_at}")
         print(f"sending to email :{user.email}")
         print("---------------------------------------------------")
         subject = "Account Activation"
@@ -37,11 +54,11 @@ Tendance
 
 Here's your code
 
-Your verification code is {otp.otp_code} and will expire in 5 minutes. For your security, use it to activate your account.
+Your verification code is {otp.otp_code} and will expire in 3 minutes. For your security, use it to activate your account.
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 Tendance is committed to preventing fraudulent emails. Emails from Tendance will always contain your full name. Learn to identify phishing
-Please don't reply to this email. To get in touch with us, click Help & Contact.
+Please don't reply to this email. To get in touch with us, call Help.
 Not sure why you received this email? Learn more...
 
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -65,10 +82,11 @@ def confirm_account(request):
     user = User.objects.get(username=request.data.get('username'))
     otp = OtpToken.objects.filter(user=user).last()
     if request.data.get('otp') == otp.otp_code:
-
         if timezone.now() < otp.otp_expires_at:
             user.is_active = True
             user.save()
+
+            otp.delete()
 
             serializer = UserSerializer(instance=user)
             refresh = RefreshToken.for_user(user)
@@ -89,13 +107,3 @@ def confirm_account(request):
 
     return Response({}, status=status.HTTP_200_OK)
 
-
-@api_view(['POST'])
-def login2fa(request):
-    user = get_object_or_404(User, username=request.data['username'])
-    if not user.check_password(request.data['password']):
-        return Response({"detail": "Wrong Password !"}, status=status.HTTP_406_NOT_ACCEPTABLE)
-
-    send_otp(username=request.data.get('username'))
-
-    return (Response({}, status=status.HTTP_200_OK))
