@@ -1,5 +1,12 @@
 from django.shortcuts import redirect
 from django.http import HttpRequest, HttpResponse, JsonResponse
+<<<<<<< HEAD
+=======
+
+import requests
+
+from .models import User
+>>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 import requests
@@ -76,6 +83,7 @@ def login42_redir(request):
             print(f"New user {username} created.")
         else:
             print(f"User {username} already exists.")
+<<<<<<< HEAD
         
         if user.last_name == "f":
             refresh = RefreshToken.for_user(user)
@@ -100,6 +108,22 @@ def login42_redir(request):
             response.set_cookie(key='username', value=username)
             response.set_cookie(key='language', value=User.objects.get(username=username).first_name)
             response['Location'] = "https://127.0.0.1/#verify"
+=======
+
+        refresh = RefreshToken.for_user(user)
+        access_token = str(refresh.access_token)
+        refresh_token = str(refresh)
+
+        response = HttpResponse(status=302)
+
+        response.set_cookie(key='access', value=access_token)
+        response.set_cookie(key='refresh', value=refresh_token)
+        response.set_cookie(key='username', value=username)
+
+        response['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+        response['Pragma'] = 'no-cache'
+        response['Location'] = "https://127.0.0.1/#dashboard"
+>>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
 
         return response
 

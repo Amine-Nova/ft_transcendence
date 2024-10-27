@@ -13,7 +13,11 @@
     "Username": "ⵉⵙⵏⵉ ⵏ ⵓⵙⵏⴰⵏ",
     "Confirm Password": "ⵜⴰⵙⵏⵉⴷ ⵏ ⵜⵙⵉⵏⵓⵙⵏ",
     "Offline": "ⵜⵓⵜⵖⴰⵍⵉ",
+<<<<<<< HEAD
     "Pong Tournament": "ⵜⵓⵜⴳⵍⵉ ⴷ ⴱⵓⵏⵖ",
+=======
+    "Tournament": "ⵜⵉⵎⵓⵔⵏⴰⵎⴻⵏⵜ",
+>>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
     "Play Pong": "ⵉⵙⵏⵉ ⵜⵓⵜⴳⵍⵉ ⴷ ⴱⵓⵏⵖ",
     "Player Registration": "ⴰⵎⴰⴷⴷⵓⵔ ⵉⵙⵏⵉⵏ",
     "First Player Name": "ⴰⵎⴷⵓⵔ ⵏ ⵓⵙⵏⵉ ⵉⵖⵔⵉ",
@@ -28,6 +32,7 @@
     "Play Again": "ⵉⵙⵏⵉ ⵏⴽⵔⵔⵏ",
     "Return to Dashboard": "ⵎⵏⵏⵔ ⴳ ⵜⴰⴱⵉⵏⵜ ⴷⵏⴰⵔ",
     "Enter your name": "ⵉⵏⵓⵅⴻⵏ ⵜⵏⴰⵖⵉⵏⵜ ⵏ ⵓⵙⵏⴰⵏ",
+<<<<<<< HEAD
     "Join Queue": "ⵜⵉⵏⴳⵓⵍ ⴳ ⵜⵉⵎⵉⵏ",
     "Logout": "ⵜⵓⵜⵖⵍⵉ ⵏ ⵓⵙⵏⴰⵏ",
     "Multiplayer": "ⵜⵓⵜⴳⵍⵉ ⴷ ⵜⵓⵜⴳⵍⵉⵏ ⵏⴽⵔⵔⵏ",
@@ -53,4 +58,7 @@
     "Player 3 (Top) R (left), T (right)": "ⵙⴽⴽⵓⵏ 3 (ⵜⵓⵜⵓⵛ) ⵔ (ⵇⵇⵣⵉⴼ), ⵜ (ⵍⵍⴽⵉⵔ)",
     "Player 4 (Bottom) U (left), O (right)": "ⵙⴽⴽⵓⵏ 4 (ⴰⴼⵔⴷⵓⴷ) ⵓ (ⵇⵇⵣⵉⴼ), ⵓ (ⵍⵍⴽⵉⵔ)",
     " wins!": "ⵉⵙ ⵜⴰⵏⵏⴰⵣⵉⵜ ⵉⵏⴼⵉ!"
+=======
+    "Join Queue": "ⵜⵉⵏⴳⵓⵍ ⴳ ⵜⵉⵎⵉⵏ"
+>>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
 }

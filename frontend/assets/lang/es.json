@@ -13,7 +13,11 @@
     "Sign Up": "Registrarse",
     "Log in": "Iniciar sesión",
     "Offline" : "Sin conexión",
+<<<<<<< HEAD
     "Pong Tournament": "Torneo de Pong",
+=======
+    "Tournament" : "Torneo",
+>>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
     "Play Pong": "Jugar Pong",
     "Player Registration": "Registro de jugador",
     "First Player Name": "Nombre del primer jugador",
@@ -28,6 +32,7 @@
     "Play Again": "Jugar de nuevo",
     "Return to Dashboard": "Volver al panel de control",
     "Enter your name": "Ingresa tu nombre",
+<<<<<<< HEAD
     "Join Queue": "Unirse a la cola",
     "Logout": "Cerrar sesión",
     "Multiplayer": "Multijugador",
@@ -53,4 +58,7 @@
     "Player 3 (Top) R (left), T (right)": "Jugador 3 (arriba) R (izquierda), T (derecha)",
     "Player 4 (Bottom) U (left), O (right)": "Jugador 4 (abajo) U (izquierda), O (derecha)",
     " wins!": "¡Gana!"
+=======
+    "Join Queue": "Unirse a la cola"
+>>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
 }

@@ -122,3 +122,21 @@ body {
         padding: 12px;
     }
 }
+
+.player-info {
+    margin-bottom: 10px;
+    font-weight: bold;
+    margin-left: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 35px;
+    color: #ffffff;
+    background-color: #000000;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* .player-name {
+    font-weight: bold;
+    margin-left: 5px;
+} */

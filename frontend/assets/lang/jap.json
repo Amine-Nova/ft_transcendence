@@ -13,7 +13,11 @@
     "Sign Up": "サインアップ",
     "Log in": "ログイン",
     "Offline" : "オフライン",
+<<<<<<< HEAD
     "Pong Tournament": "ポン大会",
+=======
+    "Tournament" : "トーナメント",
+>>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
     "Play Pong": "ポンをプレイする",
     "Player Registration": "プレイヤー登録",
     "First Player Name": "最初のプレイヤー名",
@@ -28,6 +32,7 @@
     "Play Again": "もう一度プレイ",
     "Return to Dashboard": "ダッシュボードに戻る",
     "Enter your name": "名前を入力",
+<<<<<<< HEAD
     "Join Queue": "キューに参加",
     "Logout": "ログアウト",
     "Multiplayer": "マルチプレイヤー",
@@ -53,4 +58,7 @@
     "Player 3 (Top): R (left), T (right)": "プレイヤー 3 (上) R (左)、T (右)",
     "Player 4 (Bottom): U (left), O (right)": "プレイヤー 4 (下) U (左)、O (右)",
     " wins!": " が勝利!"
+=======
+    "Join Queue": "キューに参加"
+>>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
 }

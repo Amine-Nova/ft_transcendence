@@ -1,6 +1,17 @@
 class signup extends HTMLElement{
     connectedCallback(){
         this.innerHTML = `
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#signup" onclick="changeLanguage('en')">English</a></li>
+                    <li><a href="#signup" onclick="changeLanguage('ar')">Arabic</a></li>
+                    <li><a href="#signup" onclick="changeLanguage('es')">Spanish</a></li>
+                    <li><a href="#signup" onclick="changeLanguage('jap')">Japanese</a></li>
+                    <li><a href="#signup" onclick="changeLanguage('tmz')">Tamazight</a></li>
+                </ul>
+            </nav>
+        </header>
         <div class="signup-container">
             <h1 class="signup-title" data-i18n="Sign Up"></h1>
             <form action="#signin" class="signup-form">
@@ -29,6 +40,10 @@ class signup extends HTMLElement{
         </div>
         `;
         changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
         let user = document.getElementById("username");
         let pass = document.getElementById("password");
         let repass = document.getElementById("confirm-password");
