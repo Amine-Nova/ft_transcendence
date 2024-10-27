@@ -21,7 +21,7 @@ class AiComponent extends HTMLElement {
         this.gameStarted = false;
         this.lastAIUpdate = 0;
         this.predictedBallY = 250;
-        this.difficultyLevel = 0.65;  // Reduced from 0.85 to 0.65 (65% accuracy)
+        this.difficultyLevel = 0.75;  // Reduced from 0.85 to 0.65 (65% accuracy)
         this.hitCount = 0;
     }
 
@@ -31,12 +31,13 @@ class AiComponent extends HTMLElement {
 
     showPlayerRegistration() {
         this.innerHTML = `
-            <div class="login-container">
-                <h2>Player Registration</h2>
+          <div class="login-container">
+                <h2 data-i18n="Player Registration"></h2>
                 <div class="form-group">
-                    <input type="text" id="playerName" placeholder="Enter Your Name">
+                    <span data-i18n="Enter Your Name:"></span>
+                    <input type="text" id="playerName">
                 </div>
-                <button class="btn" id="startGame">Start Game</button>
+                <button class="btn" id="startGame" data-i18n="Start Game"></button>
             </div>
         `;
         this.querySelector('#startGame').addEventListener('click', () => {
@@ -286,10 +287,11 @@ class AiComponent extends HTMLElement {
         
         this.innerHTML = `
             <div class="login-container">
-                <h2 class="login-title">Game Over</h2>
-                <p class="word">${winner} wins!</p>
-                <button class="btn" id="restartGame">Play Again</button>
-                <button class="btn" id="returnToDashboard">Return to Dashboard</button>
+                <h2 class="login-title" data-i18n="Game Over"></h2>
+                <span class="word">${winner}</span>
+                <span class="word" data-i18n=" wins!"></span><br>
+                <button class="btn" id="restartGame" data-i18n="Play Again"></button>
+                <button class="btn" id="returnToDashboard" data-i18n="Return to Dashboard"></button>
             </div>
         `;
         this.querySelector('#restartGame').addEventListener('click', () => {

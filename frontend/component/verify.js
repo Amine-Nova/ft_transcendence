@@ -2,14 +2,14 @@ class verify extends HTMLElement{
     connectedCallback(){
         this.innerHTML = `
         <div class="login-container">
-            <h1 class="login-title" > Confirm </h1>
+            <h1 class="login-title" data-i18n="Confirm"></h1>
             <form action="#" method="POST" class="login-form">
                 <div class="form-group">
-                    <label for="otp" > one time password </label>
+                    <label for="otp" data-i18n="one time password"></label>
                     <input type="text" id="otp" name="otp" required>
                 </div>
                 <div class="form-group">
-                    <h3><a type="submit" class="login-btn" id="log"> Confirm </a></h3>
+                    <h3><a type="submit" class="login-btn" id="log" data-i18n="Confirm"></a></h3>
                 </div>
                 <div class="form-group">
                 </div>

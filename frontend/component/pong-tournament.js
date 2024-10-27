@@ -26,11 +26,11 @@ class PongTournament extends HTMLElement {
         </style>
 
         <div class="login-container">
-            <h2>Pong Tournament Setup</h2>
+            <h2 data-i18n="Pong Tournament Setup"></h2>
             <form id="participantCountForm">
-                <label for="participantCount">Number of Participants:</label>
+                <label for="participantCount" data-i18n="Number of Participants:"></label>
                 <input type="number" id="participantCount" min="2" max="16" required>
-                <button class="btn" id="registerPlayers" type="submit">Next</button>
+                <button class="btn" id="registerPlayers" type="submit" data-i18n="Next"></button>
             </form>
         </div>
     `;
@@ -44,14 +44,13 @@ class PongTournament extends HTMLElement {
     showRegistrationForm(count) {
         let inputs = '';
         for (let i = 1; i <= count; i++) {
-            inputs += `<input type="text" id="player${i}" placeholder="Player ${i} Name" required><br>`;
-        }
+            inputs += `<span data-i18n="Player "></span><span>${i}</span> <span data-i18n=" Name"></span><br><input type="text" id="player${i}"  required><br>`;        }
         this.innerHTML = `
         <div class="login-container">
-            <h2>Player Registration</h2>
+            <h2 data-i18n="Player Registration"></h2>
             <form id="registrationForm">
                 ${inputs}
-                <button class="btn" id="registerPlayers" type="submit">Start Tournament</button>
+                <button class="btn" id="registerPlayers" type="submit" data-i18n="Start Tournament"></button>
             </form>
         </div>
         `;
@@ -150,12 +149,14 @@ class PongTournament extends HTMLElement {
             </style>
     
             <div class="login-container">
-                <h2>Next Match</h2>
+            <h2 data-i18n="Next Match"></h2>
                 <div class="form-group">
                     <p>${player1} vs ${player2}</p>
-                    ${previousWinner ? `<div class="previous-winner">Last Winner: ${previousWinner}</div>` : ''}
+                    ${previousWinner ? `<div class="previous-winner">
+                    <span data-i18n="Last Winner: "></span>
+                    <span> ${previousWinner} </span> </div>` : ''}
                 </div>
-                <button class="btn" id="startMatch">Start Match</button>
+                <button class="btn" id="startMatch" data-i18n="Start Match"></button>
             </div>
         `;
         this.querySelector('#startMatch').addEventListener('click', () => this.startMatch(player1, player2));
@@ -192,9 +193,10 @@ class PongTournament extends HTMLElement {
 
     showMatchResult(winner) {
         this.innerHTML = `
-            <h2>Match Result</h2>
-            <p>${winner} wins the match!</p>
-            <button id="nextMatch">Next Match</button>
+            <h2 data-i18n="Match Result"></h2>
+            <span> ${winner}</span>
+            <span data-i18n=" wins the match!"></span><br>
+            <button id="nextMatch" data-i18n="Next Match"></button>
         `;
         this.querySelector('#nextMatch').addEventListener('click', () => this.playNextMatch());
     }
@@ -225,18 +227,15 @@ class PongTournament extends HTMLElement {
                 background: rgba(255, 255, 255, 0.1); /* Slightly lighter background to highlight */
                 padding: 10px;
                 border-radius: 5px;
-            }
-
-            
-
-            
+            } 
         </style>
 
         <div class="login-container">
-            <h2 class="login-title">Tournament Ended</h2>
-            <p class="word">${winner} is the tournament champion!</p>
-            <button class="btn" id="newTournament">Start New Tournament</button>
-            <button class="btn" id="returnToDashboard">Return to Dashboard</button>
+            <h2 class="login-title" data-i18n="Tournament Ended"></h2>
+            <span class="word"> ${winner} </span>
+            <span class="word" data-i18n=" is the tournament champion!"></span>
+            <button class="btn" id="newTournament" data-i18n="Start New Tournament"></button>
+            <button class="btn" id="returnToDashboard" data-i18n="Return to Dashboard"></button>
         </div>
     `;
         this.querySelector('#newTournament').addEventListener('click', () => {

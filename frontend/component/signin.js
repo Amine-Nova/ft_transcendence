@@ -1,8 +1,6 @@
 class signin extends HTMLElement{
     connectedCallback(){
-
         this.innerHTML = `
-        </div>
         <div class="login-container">
             <h1 class="login-title" data-i18n="Login"></h1>
             <form action="#" method="POST" class="login-form">

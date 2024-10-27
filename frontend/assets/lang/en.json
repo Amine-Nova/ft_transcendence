@@ -1,4 +1,4 @@
- {
+{
     "Welcome!": "Welcome",
     "Get Started": "Get Started",
     "Login": "Login",
@@ -52,5 +52,21 @@
     "Player 2 (Right): P (up), L (down)": "Player 2 (Right): P (up), L (down)",
     "Player 3 (Top): R (left), T (right)": "Player 3 (Top): R (left), T (right)",
     "Player 4 (Bottom): U (left), O (right)": "Player 4 (Bottom): U (left), O (right)",
-    " wins!": " wins!"
+    " wins!": " wins!",
+    "Choose your Preferable Language:": "Choose your Preferable Language:",
+    "AI Mode": "AI Mode",
+    "2faEnabled": "2FA enabled",
+    "2faDisabled": "2FA disabled",
+    "English": "English",
+    "Arabic": "Arabic",
+    "Spanish": "Spanish",
+    "Japanese": "Japanese",
+    "Tamazight": "Tamazight",
+    "First Team Name:": "First Team Name:",
+    "Second Team Name:": "Second Team Name:",
+    "Last Winner: ": "Last Winner: ",
+    "Enter Your Name:": "Enter Your Name:",
+    "AI: ": "AI: ",
+    "one time password": "one time password",
+    "Confirm": "Confirm"
 }
