@@ -52,5 +52,6 @@
     "Player 2 (Right): P (up), L (down)": "プレイヤー 2 (右) P (上)、L (下)",
     "Player 3 (Top): R (left), T (right)": "プレイヤー 3 (上) R (左)、T (右)",
     "Player 4 (Bottom): U (left), O (right)": "プレイヤー 4 (下) U (左)、O (右)",
-    " wins!": " が勝利!"
+    " wins!": " が勝利!",
+    "AI Mode": "AI モード"
 }

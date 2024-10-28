@@ -1,15 +1,4 @@
 /* General styling for the body */
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: url('../img/output.png') no-repeat center center fixed;
-    background-size: cover;
-}
 
 
 /* Container for the login box */
@@ -22,6 +11,7 @@ body {
     width: 100%;
     max-width: 400px;
     animation: fadeIn 1s ease-in-out;
+    margin: 14em;
 }
 
 /* Login title styling */

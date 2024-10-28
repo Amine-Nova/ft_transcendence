@@ -1,3 +1,4 @@
+import { getCookie} from "./func.js";
 class verify extends HTMLElement{
     connectedCallback(){
         this.innerHTML = `
@@ -19,11 +20,6 @@ class verify extends HTMLElement{
         changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         let otp = document.getElementById("otp");
         let submitBuuton = document.getElementById("log");
-        const getCookieValue = (name) => {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-        };
         submitBuuton.addEventListener('click', async function(event)
         {
             console.log(otp.value);
@@ -45,7 +41,7 @@ class verify extends HTMLElement{
                     "body" : JSON.stringify
                     ({
                         otp: otp.value,
-                        username: getCookieValue('username'),
+                        username: getCookie('username'),
                     })
             });
             if (res.ok) 

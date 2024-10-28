@@ -52,5 +52,6 @@
     "Player 2 (Right) P (up), L (down)": "Jugador 2 (derecha) P (arriba), L (abajo)",
     "Player 3 (Top) R (left), T (right)": "Jugador 3 (arriba) R (izquierda), T (derecha)",
     "Player 4 (Bottom) U (left), O (right)": "Jugador 4 (abajo) U (izquierda), O (derecha)",
-    " wins!": "¡Gana!"
+    " wins!": "¡Gana!",
+    "AI Mode": "Modo IA"
 }

@@ -8,6 +8,8 @@
 	text-align: center;
 	animation: fadeIn 1.5s ease-in-out;
 	overflow: hidden; /* Ensures the pseudo-element stays inside the container */
+  margin-top: 14em;
+  margin-left: 20px;
 }
 
 /* Pseudo-element to apply a transparent background image */
@@ -50,6 +52,57 @@
     gap: 100px; /* Space between buttons */
   }
   
+.faDisabled {
+  background-color: #3b3838;
+  color: white;
+  border-radius: 15px;
+}
+
+  .abtn{
+    background-color: #560df5;
+    padding: 10px 30px;
+    color: black;
+    text-decoration: none;
+    border: none;
+  }
+  .ebtn{
+    background-color: #560df5;
+    padding: 10px 30px;
+    color: black;
+    text-decoration: none;
+    border: none;
+    /* position: absolute; Use absolute positioning */
+    /* top: 10px; Distance from the top */
+    /* right: 40em; */
+  }
+
+  select {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+option {
+    background-color: black;
+    color: white;
+}
+
+/* Change color when hovering over the select dropdown */
+select:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Styling for the placeholder option */
+option[value=""] {
+    color: grey;
+}
+
   /* Button styling */
   .btn {
     display: inline-block;
@@ -62,7 +115,7 @@
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.2s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	z-index: 1;
+	  z-index: 1;
   }
   
   .btn:hover {
@@ -70,7 +123,16 @@
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
-
+  .ebtn:hover {
+    background-color: hsl(0, 0%, 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  .abtn:hover {
+    background-color: #ffff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
 .score
 {
   display: flex;
@@ -110,6 +172,16 @@
     }
   
     .btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+    }
+    .abtn {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+    }
+    .ebtn {
       width: 100%;
       padding: 12px;
       font-size: 1em;

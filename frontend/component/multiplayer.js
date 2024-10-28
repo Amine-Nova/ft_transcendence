@@ -1,3 +1,4 @@
+import { getCookie} from "./func.js";
 class MultiPlayer extends HTMLElement {
     constructor() {
         super();
@@ -25,17 +26,23 @@ class MultiPlayer extends HTMLElement {
     connectedCallback() {
         this.showRegistrationPopup();
     }
-
+    
     showRegistrationPopup() {
+        const username = getCookie('username') || 'Guest';
         this.innerHTML = `
-            <div class="login-container">
-                <h2>Team Registration</h2>
-                <div class="form-group">
-                    <input type="text" id="team1Name" placeholder="Team 1 Name">
-                    <input type="text" id="team2Name" placeholder="Team 2 Name">
-                </div>
-                <button class="btn" id="registerTeams">Start Game</button>
-            </div>
+        </div>
+        <div class="login-container">
+        <h2>Team Registration</h2>
+        <div class="form-group">
+        <input type="text" id="team1Name" placeholder="Team 1 Name">
+        <input type="text" id="team2Name" placeholder="Team 2 Name">
+        </div>
+        <button class="btn" id="registerTeams">Start Game</button>
+        </div>
+        <div class="header">
+        <div class="content">
+            <p class="ebtn" id="username">${username}</p>
+        </div>
         `;
         this.querySelector('#registerTeams').addEventListener('click', this.registerTeams.bind(this));
     }
@@ -68,6 +75,7 @@ class MultiPlayer extends HTMLElement {
     }
 
     renderGame() {
+        const username = getCookie('username') || 'Guest';
         this.innerHTML = `
             <div id="gameArea">
                 <div class="score-container" id="scoreBoard">
@@ -82,6 +90,9 @@ class MultiPlayer extends HTMLElement {
                     <p>Player 3 (Top): R (left), T (right)</p>
                     <p>Player 4 (Bottom): U (left), O (right)</p>
                 </div>
+                <div class="header">
+                <div class="content">
+                    <p class="ebtn" id="username">${username}</p>
             </div>
         `;
 
@@ -285,6 +296,7 @@ class MultiPlayer extends HTMLElement {
     showWinnerPopup() {
         this.gameStarted = false;
         const winnerIndex = this.teamScores[0] > this.teamScores[1] ? 0 : 1;
+        const username = getCookie('username') || 'Guest';
         this.innerHTML = `
         <div class="login-container">
             <h2 class="login-title">Game Over</h2>
@@ -292,6 +304,9 @@ class MultiPlayer extends HTMLElement {
             <button class="btn" id="restartGame">Play Again</button>
             <button class="btn" id="returnToDashboard">Return to Dashboard</button>
         </div>
+        <div class="header">
+        <div class="content">
+            <p class="ebtn" id="username">${username}</p>
         `;
         this.querySelector('#restartGame').addEventListener('click', () => this.startNewGame());
         this.querySelector('#returnToDashboard').addEventListener('click', this.returnToDashboard.bind(this));

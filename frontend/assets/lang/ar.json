@@ -52,5 +52,6 @@
     "Player 2 (Right): P (up), L (down)": "اللاعب 2 (يمين) P (أعلى)، L (أسفل)",
     "Player 3 (Top): R (left), T (right)": "اللاعب 3 (أعلى) R (يسار)، T (يمين)",
     "Player 4 (Bottom): U (left), O (right)": "اللاعب 4 (أسفل) U (يسار)، O (يمين)",
-    " wins!": "!يفوز"
+    " wins!": "!يفوز",
+    "AI Mode": "وضع الذكاء الاصطناعي"
 }

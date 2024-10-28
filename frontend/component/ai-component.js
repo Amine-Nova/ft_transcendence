@@ -1,3 +1,4 @@
+import { getCookie} from "./func.js";
 class AiComponent extends HTMLElement {
     constructor() {
         super();
@@ -30,15 +31,20 @@ class AiComponent extends HTMLElement {
     }
 
     showPlayerRegistration() {
+        const username = getCookie('username') || 'Guest';
         this.innerHTML = `
             <div class="login-container">
-                <h2>Player Registration</h2>
+                <h2 data-i18n="Player Registration"></h2>
                 <div class="form-group">
                     <input type="text" id="playerName" placeholder="Enter Your Name">
                 </div>
-                <button class="btn" id="startGame">Start Game</button>
+                <button class="btn" id="startGame" data-i18n="Start Game"></button>
             </div>
+            <div class="header">
+            <div class="content">
+                <p class="ebtn" id="username">${username}</p>
         `;
+        changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         this.querySelector('#startGame').addEventListener('click', () => {
             const nameInput = this.querySelector('#playerName');
             const playerName = nameInput.value.trim();
@@ -52,6 +58,7 @@ class AiComponent extends HTMLElement {
     }
 
     initializeGame() {
+        const username = getCookie('username') || 'Guest';
         this.innerHTML = `
             <div id="gameArea">
                 <div class="score-container" id="scoreBoard">
@@ -60,6 +67,9 @@ class AiComponent extends HTMLElement {
                 </div>
                 <canvas id="pongCanvas" width="1000" height="500"></canvas>
             </div>
+            <div class="header">
+            <div class="content">
+                <button class="ebtn" id="username">${username}</button>
         `;
 
         this.canvas = this.querySelector('#pongCanvas');
@@ -283,15 +293,19 @@ class AiComponent extends HTMLElement {
     showWinnerPopup() {
         this.gameStarted = false;
         const winner = this.score1 >= 5 ? this.playerName : 'AI';
-        
+        const username = getCookie('username') || 'Guest';
         this.innerHTML = `
             <div class="login-container">
-                <h2 class="login-title">Game Over</h2>
+                <h2 class="login-title" data-i18n="Game Over"></h2>
                 <p class="word">${winner} wins!</p>
-                <button class="btn" id="restartGame">Play Again</button>
-                <button class="btn" id="returnToDashboard">Return to Dashboard</button>
+                <button class="btn" id="restartGame" data-i18n="Play Again"></button>
+                <button class="btn" id="returnToDashboard" data-i18n="Return to Dashboard"></button>
             </div>
+            <div class="header">
+            <div class="content">
+                <button class="ebtn" id="username">${username}</button>
         `;
+        changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         this.querySelector('#restartGame').addEventListener('click', () => {
             this.score1 = 0;
             this.score2 = 0;

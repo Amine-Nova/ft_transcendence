@@ -1,3 +1,4 @@
+import { getCookie} from "./func.js";
 class PongGame extends HTMLElement {
     constructor() {
         super();
@@ -41,6 +42,7 @@ class PongGame extends HTMLElement {
     }
 
     showRegistrationPopup() {
+        const username = getCookie('username') || 'Guest';
         this.innerHTML = `
             <div class="login-container">
                 <h2>Player Registration</h2>
@@ -50,6 +52,9 @@ class PongGame extends HTMLElement {
                 </div>
                 <button class="btn" id="registerPlayers">Register</button>
             </div>
+            <div class="header">
+            <div class="content">
+                <p class="ebtn" id="username">${username}</p>
         `;
         this.querySelector('#registerPlayers').addEventListener('click', this.registerPlayers.bind(this));
     }
@@ -85,6 +90,7 @@ class PongGame extends HTMLElement {
     
 
     showMatchmakingWindow() {
+        const username = getCookie('username') || 'Guest';
         this.innerHTML = `
         <div class="login-container">
             <div class="popup">
@@ -93,13 +99,16 @@ class PongGame extends HTMLElement {
                 <p class="word">Player 2: ${this.player2Name}</p>
                 <button class="btn" id="startGame">Start Game</button>
             </div>
-            </div>
+            </div> 
+            <div class="header">
+            <div class="content">
+                <p class="ebtn" id="username">${username}</p>
         `;
         this.querySelector('#startGame').addEventListener('click', this.startGame.bind(this));
     }
 
     startGame() {
-        
+        const username = getCookie('username') || 'Guest';
         this.innerHTML = `
             <div id="gameArea">
                 <div class="score-container" id="scoreBoard">
@@ -108,6 +117,9 @@ class PongGame extends HTMLElement {
                 </div>
                 <canvas id="pongCanvas" width="1000" height="500"></canvas>
             </div>
+            <div class="header">
+            <div class="content">
+                <p class="ebtn" id="username">${username}</p>
         `;
 
         this.canvas = this.querySelector('#pongCanvas');
@@ -276,13 +288,17 @@ class PongGame extends HTMLElement {
                // Return to tournament view
                window.location.hash = '#tournament';
         } else {
+            const username = getCookie('username') || 'Guest';
             this.innerHTML = `
                 <div class="login-container">
                     <h2 class="login-title">Game Over</h2>
                     <p class="word">${winner} wins!</p>
                     <button class="btn" id="restartGame">Play Again</button>
                     <button class="btn" id="returnToDashboard">Return to Dashboard</button>
-                </div>
+                </div>            
+            <div class="header">
+            <div class="content">
+                <p class="ebtn" id="username">${username}</p>
             `;
             this.querySelector('#restartGame').addEventListener('click', this.restartGame.bind(this));
             this.querySelector('#returnToDashboard').addEventListener('click', this.returnToDashboard.bind(this));

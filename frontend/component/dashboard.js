@@ -1,14 +1,10 @@
 import { CheckAuthenticated } from "./func.js";
+import { getCookie} from "./func.js";
 class dashboard extends HTMLElement
 {
     async connectedCallback()
     {
-        const getCookieValue = (name) => {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-        };
-        const username = getCookieValue('username') || 'Guest';
+        const username = getCookie('username') || 'Guest';
 
         const res = await fetch("https://0.0.0.0:8000/get2fa/",
         {
@@ -27,7 +23,6 @@ class dashboard extends HTMLElement
         console.log("2fa = ", fa, fda.fact);
 
         this.innerHTML = `
-        <button class="login-btn" id="2fa"> ${fa ? '2FA enabled' : '2FA disabled'}</button>
         <label for="pet-select">Choose your Preferable Language:</label>
         <select>
         <option value="">--Please choose an option--</option>
@@ -39,17 +34,17 @@ class dashboard extends HTMLElement
         </select>
         <div class="header">
         <div class="content">
-            <button class="btn" id="log" data-i18n="Logout"></button>
-            </div>
-            </div>
-            
-        <p class="btn" id="username">${username}</p>
+            <button class="ebtn" id="username">${username}</button>
+            <button class="abtn" id="2fa"> ${fa ? '2FA enabled' : '2FA disabled'}</button>
+            <button class="abtn" id="log" data-i18n="Logout"></button>
+        </div>
+        </div>
         <div class="main-container">
             <div class="content">
             <a href="#multiplayer" class="btn" data-i18n="Multiplayer"></a>
             <a href="#tournament" class="btn" data-i18n="Pong Tournament"></a>
             <a href="#pong" class="btn" data-i18n="Play Pong"></a>  
-            <a href="#ai" class="btn" >AI Mode</a>
+            <a href="#ai" class="btn" data-i18n="AI Mode"></a>
             </div>
         </div>
         `;
@@ -146,7 +141,7 @@ class dashboard extends HTMLElement
             document.cookie = `language=tmz; path=/; SameSite=None; Secure`;
             changeLanguage('tmz');
         });
-        let lang = getCookieValue('language')
+        let lang = getCookie('language')
         changeLanguage(lang);
 
         /* ####################################################### */

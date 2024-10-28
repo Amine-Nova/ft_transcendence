@@ -1,13 +1,17 @@
 body{
 	margin: 0;
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: 98.9vh;
+	flex-direction: column;/*change*/
 	background: url('../img/output.png') no-repeat center center;
 	background-size: cover;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	color: #fff;
+}
+
+*, ::after, ::before {/*change*/
+    box-sizing:initial;
 }
 .signin a{
 	display: inline-block;
@@ -32,6 +36,7 @@ body{
 	text-align: center;
 	animation: fadeIn 1.5s ease-in-out;
 	overflow: hidden; /* Ensures the pseudo-element stays inside the container */
+	margin-top: 14rem;
 }
 
 /* Pseudo-element to apply a transparent background image */
@@ -84,7 +89,16 @@ h3 {
 	position: relative; /* Keeps button above background */
 	z-index: 1;
 }
-
+.abtn {
+	font-size: 1.2em;
+	font-weight: bold;
+	border-radius: 8px;
+}
+.ebtn {
+	font-size: 1.2em;
+	font-weight: bold;
+	border-radius: 8px;
+}
 /* Button hover effect */
 .btn:hover {
 	background-color: #878787;
@@ -116,6 +130,16 @@ h3 {
 	}
 
 	.btn {
+		width: 100%;
+		padding: 12px;
+		font-size: 1.1em;
+	}
+	.abtn {
+		width: 100%;
+		padding: 12px;
+		font-size: 1.1em;
+	}
+	.ebtn {
 		width: 100%;
 		padding: 12px;
 		font-size: 1.1em;
