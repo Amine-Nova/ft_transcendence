@@ -1,3 +1,4 @@
+import { changeLanguage } from "../assets/js/script.js";
 class signin extends HTMLElement{
     connectedCallback(){
 

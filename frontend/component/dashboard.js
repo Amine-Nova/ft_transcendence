@@ -1,5 +1,6 @@
 import { CheckAuthenticated } from "./func.js";
 import { getCookie} from "./func.js";
+import { changeLanguage } from "../assets/js/script.js";
 class dashboard extends HTMLElement
 {
     async connectedCallback()

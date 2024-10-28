@@ -1,3 +1,4 @@
+import { changeLanguage } from "../assets/js/script.js";
 class home extends HTMLElement{
   connectedCallback(){
       this.innerHTML = `

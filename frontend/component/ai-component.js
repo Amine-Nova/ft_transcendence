@@ -1,4 +1,5 @@
 import { getCookie} from "./func.js";
+import { changeLanguage } from "../assets/js/script.js";
 class AiComponent extends HTMLElement {
     constructor() {
         super();

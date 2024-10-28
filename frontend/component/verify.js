@@ -1,4 +1,5 @@
-import { getCookie} from "./func.js";
+import { changeLanguage } from "../assets/js/script.js";
+import {getCookie} from "./func.js";
 class verify extends HTMLElement{
     connectedCallback(){
         this.innerHTML = `

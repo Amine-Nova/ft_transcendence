@@ -1,4 +1,4 @@
-function loadLanguage(lang) {
+export function loadLanguage(lang) {
   fetch(`/assets/lang/${lang}.json`)
       .then((response) => response.json())
       .then((translations) => {
@@ -9,7 +9,7 @@ function loadLanguage(lang) {
     });
 }
 
-function applyTranslations(translations) {
+export function applyTranslations(translations) {
   document.querySelectorAll('[data-i18n]').forEach((element) => {
       const key = element.getAttribute('data-i18n');
       if (translations[key]) {
@@ -18,7 +18,7 @@ function applyTranslations(translations) {
   });
 }
 
-function changeLanguage(lang) {
+export function changeLanguage(lang) {
   loadLanguage(lang);
   localStorage.setItem('preferredLanguage', lang);
 }

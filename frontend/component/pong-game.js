@@ -1,4 +1,5 @@
 import { getCookie} from "./func.js";
+import { changeLanguage } from "../assets/js/script.js";
 class PongGame extends HTMLElement {
     constructor() {
         super();

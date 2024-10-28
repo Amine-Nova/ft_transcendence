@@ -1,3 +1,4 @@
+import { changeLanguage } from "../assets/js/script.js";
 class Matchmaking extends HTMLElement {
     constructor() {
         super();

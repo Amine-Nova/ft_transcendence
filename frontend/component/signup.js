@@ -1,3 +1,4 @@
+import { changeLanguage } from "../assets/js/script.js";
 class signup extends HTMLElement{
     connectedCallback(){
         this.innerHTML = `
