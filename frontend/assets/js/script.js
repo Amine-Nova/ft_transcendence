@@ -4,13 +4,9 @@ function loadLanguage(lang) {
       .then((translations) => {
           applyTranslations(translations);
       })
-<<<<<<< HEAD
       .catch((error) => {
         loadLanguage('en');
     });
-=======
-      .catch((error) => console.error('Error loading language file:', error));
->>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
 }
 
 function applyTranslations(translations) {

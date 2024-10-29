@@ -1,33 +1,30 @@
 from django.shortcuts import redirect
 from django.http import HttpRequest, HttpResponse, JsonResponse
-<<<<<<< HEAD
-=======
-
-import requests
-
-from .models import User
->>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
 from django.contrib.auth.models import User
-from rest_framework_simplejwt.tokens import RefreshToken
 import requests
+
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from ua.views import set_token_cookies
 from doublefactor.views import send_otp
 
 UID = "u-s4t2ud-675e5069bbc568c9524d521aa9274b1df90a0e67de4c026bf7f003f5899cbdb1"
-secret = "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"
-auth_url = "https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-675e5069bbc568c9524d521aa9274b1df90a0e67de4c026bf7f003f5899cbdb1&redirect_uri=https%3A%2F%2F127.0.0.1%3A8000%2Flogin42_redir%2F&response_type=code"
+SECRET = "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"
+AUTH_URL = "https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-675e5069bbc568c9524d521aa9274b1df90a0e67de4c026bf7f003f5899cbdb1&redirect_uri=https%3A%2F%2F127.0.0.1%3A8000%2Flogin42_redir%2F&response_type=code"
 REDIRECT_URI = 'https://127.0.0.1:8000/login42_redir/'
 
 def login42(request: HttpRequest):
-	return redirect(auth_url)
+	return redirect(AUTH_URL)
 
 # Function to exchange authorization code for access token
 def exchange_code_for_token(code: str):
     token_url = "https://api.intra.42.fr/oauth/token"
     data = {
         'client_id': UID,
-        'client_secret': secret,
+        'client_secret': SECRET,
         'code': code,
         'redirect_uri': REDIRECT_URI,
         'grant_type': 'authorization_code'
@@ -58,6 +55,7 @@ def get_42_user_info(access_token: str):
     return response.json()
 
 # Main view to handle the OAuth redirect
+@api_view(['GET'])
 def login42_redir(request):
     code = request.GET.get('code')
     if not code:
@@ -83,14 +81,19 @@ def login42_redir(request):
             print(f"New user {username} created.")
         else:
             print(f"User {username} already exists.")
-<<<<<<< HEAD
         
         if user.last_name == "f":
             refresh = RefreshToken.for_user(user)
             access_token = str(refresh.access_token)
             refresh_token = str(refresh)
 
-            response = HttpResponse(status=302)
+            response =  Response({
+                "access": str(refresh.access_token),
+                "refresh": str(refresh),
+                "username": user.username,
+                "language": user.first_name,
+                "2fa": user.last_name
+            }, status=302)
 
             response.set_cookie(key='access', value=access_token)
             response.set_cookie(key='refresh', value=refresh_token)
@@ -104,26 +107,15 @@ def login42_redir(request):
         elif user.last_name == "t":
             send_otp(username)
 
-            response = HttpResponse(status=302)
+            response =  Response({
+                "username": user.username,
+                "language": user.first_name,
+                "2fa": user.last_name
+            }, status=302)
+
             response.set_cookie(key='username', value=username)
             response.set_cookie(key='language', value=User.objects.get(username=username).first_name)
             response['Location'] = "https://127.0.0.1/#verify"
-=======
-
-        refresh = RefreshToken.for_user(user)
-        access_token = str(refresh.access_token)
-        refresh_token = str(refresh)
-
-        response = HttpResponse(status=302)
-
-        response.set_cookie(key='access', value=access_token)
-        response.set_cookie(key='refresh', value=refresh_token)
-        response.set_cookie(key='username', value=username)
-
-        response['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
-        response['Pragma'] = 'no-cache'
-        response['Location'] = "https://127.0.0.1/#dashboard"
->>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
 
         return response
 

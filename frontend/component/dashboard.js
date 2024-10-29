@@ -3,7 +3,6 @@ class dashboard extends HTMLElement
 {
     async connectedCallback()
     {
-<<<<<<< HEAD
         const getCookieValue = (name) => {
             const value = `; ${document.cookie}`;
             const parts = value.split(`; ${name}=`);
@@ -41,44 +40,20 @@ class dashboard extends HTMLElement
         <div class="header">
             <div class="content">
                 <button class="btn" id="log" data-i18n="Logout"></button>
-=======
-        this.innerHTML = `
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="#dashboard" onclick="changeLanguage('en')">English</a></li>
-                    <li><a href="#dashboard" onclick="changeLanguage('ar')">Arabic</a></li>
-                    <li><a href="#dashboard" onclick="changeLanguage('es')">Spanish</a></li>
-                    <li><a href="#dashboard" onclick="changeLanguage('jap')">Japanese</a></li>
-                    <li><a href="#dashboard" onclick="changeLanguage('tmz')">Tamazight</a></li>
-                </ul>
-            </nav>
-        </header>
-        <div class="header">
-            <div class="content">
-                <button class="btn" id="log">Logout</button>
->>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
             </div>
         </div>
 
         <p class="btn" id="username">${username}</p>
         <div class="main-container">
             <div class="content">
-<<<<<<< HEAD
                 <a href="#multiplayer" class="btn" data-i18n="Multiplayer"></a>
                 <a href="#tournament" class="btn" data-i18n="Pong Tournament"></a>
                 <a href="#pong" class="btn" data-i18n="Play Pong"></a>  
                 <a href="#ai" class="btn" data-i18n="AI Mode"></a>
-=======
-                <a href="" class="btn" data-i18n="Offline"></a>
-                <a href="" class="btn" data-i18n="Tournament"></a>
-                <a href="#pong" class="btn" data-i18n="Play Pong"></a>
->>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
             </div>
         </div>
         `;
         changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
-<<<<<<< HEAD
         function deleteCookie(name) {
             document.cookie = `${name}=; expires=Thu, 20 Sep 2001 00:00:00 UTC; path=/;`;
         }
@@ -198,23 +173,6 @@ class dashboard extends HTMLElement
 
         /* ####################################################### */
         
-=======
-
-        const cookies = document.cookie.split('; ');
-        let usernameValue = null;
-        for (const cookie of cookies) {
-            const [key, val] = cookie.split('=');
-            if (key === 'username') {
-                usernameValue = val;
-                break;
-            }
-        }
-        function deleteCookie(name) {
-            document.cookie = `${name}=; expires=Thu, 20 Sep 2001 00:00:00 UTC; path=/;`;
-          }
-          
-        let submitBuuton = document.getElementById("log");
->>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
         submitBuuton.addEventListener('click', async function(event)
         {
             event.preventDefault();
@@ -228,10 +186,7 @@ class dashboard extends HTMLElement
                     deleteCookie('access');
                     deleteCookie('refresh');
                     deleteCookie('username');
-<<<<<<< HEAD
                     deleteCookie('language');
-=======
->>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
                     localStorage.clear();
                     window.location.hash = "#signin";
                 } 

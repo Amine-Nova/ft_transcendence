@@ -3,23 +3,6 @@ import { CheckAuthenticated } from "./func.js";
 
 
 console.log(route)
-<<<<<<< HEAD
-=======
-
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    return null;
-}
-
-function isAuthenticated() {
-    const token = getCookie('access');
-    return token !== null;
-}
-
-function navigate(){
->>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
 
 function getCookie(name) 
 {
@@ -47,7 +30,6 @@ async function navigate(){
     const path = window.location.hash.substring(1);
     const page = route[path];
     const container = document.getElementById('container');
-<<<<<<< HEAD
     if ((isAuthenticated()) && page !== "signup-component" && page !== "signin-component") {
         container.innerHTML = `<${page}></${page}>`;
     }
@@ -67,19 +49,16 @@ async function navigate(){
     }
     else
     {
-=======
-    if (isAuthenticated()) {
->>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
         container.innerHTML = `<${page}></${page}>`;
     }
-    else if (page !== "signup-component" && page !== "signin-component" && page !== "home-component") {
-        window.location.hash = '#signin';
-        alert('You must be logged in to access this page.');
-    }
-    else 
-        container.innerHTML = `<${page}></${page}>`;
-    if (isAuthenticated() && (page === "signup-component" || page === "signin-component"))
-        window.location.hash = "#dashboard";
+    // else if (page !== "signup-component" && page !== "signin-component" && page !== "home-component") {
+    //     window.location.hash = '#signin';
+    //     alert('You must be logged in to access this page.');
+    // }
+    // else 
+    //     container.innerHTML = `<${page}></${page}>`;
+    // if (isAuthenticated() && (page === "signup-component" || page === "signin-component"))
+    //     window.location.hash = "#dashboard";
 }
 
 

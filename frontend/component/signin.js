@@ -37,10 +37,6 @@ class signin extends HTMLElement{
         </div>
         `;
         changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
-<<<<<<< HEAD
-=======
-
->>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
         let user = document.getElementById("username");
         let pass = document.getElementById("password");
         let submitBuuton = document.getElementById("log");
@@ -57,7 +53,6 @@ class signin extends HTMLElement{
 
             const resp = await fetch("https://0.0.0.0:8000/get2fa/",
             {
-<<<<<<< HEAD
                 method :"POST",
                 mode:"cors",
                 headers:
@@ -113,42 +108,10 @@ class signin extends HTMLElement{
                 {
                     alert(data.detail);
                 });
-=======
-                    method :"POST",
-                    mode:"cors",
-                    headers:
-                    {
-                        'Content-Type': 'application/json',
-                    },
-                        "method":"POST",
-                        "body" : JSON.stringify
-                        ({
-                                username: user.value, 
-                                password: pass.value,
-                        })
-            });
-            if (res.ok) 
-            {
-                const data = await res.json();
-                document.cookie = `refresh=${data.refresh}; path=/`;
-                document.cookie = `access=${data.access}; path=/`;
-                window.location.hash = "#dashboard";
-            } 
-            else 
-            {
-
->>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
             }
         })
         intraButton.addEventListener('click', async function(event) {
             event.preventDefault();
-<<<<<<< HEAD
-=======
-        
-            window.location.href = "http://127.0.0.1:8000/login42/";
-        });
-        
->>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
 
             window.location.href = "https://0.0.0.0:8000/login42/";
         });

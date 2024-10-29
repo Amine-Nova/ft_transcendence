@@ -40,10 +40,6 @@ class signup extends HTMLElement{
         </div>
         `;
         changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
-<<<<<<< HEAD
-=======
-
->>>>>>> 2d6c35f93f9e4eff9bc0180bb369d01ae5d2bfcd
         let user = document.getElementById("username");
         let pass = document.getElementById("password");
         let repass = document.getElementById("confirm-password");
