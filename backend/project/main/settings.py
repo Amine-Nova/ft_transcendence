@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t7c2p1=ed!)*hj+p^w!+qlns7%-p&xfe)1ff)&7vf^6)sqm)%f'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'ua.authentication.CustomJWTAuthentication',
     )
 }
 
@@ -123,9 +123,9 @@ SIMPLE_JWT = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'amine', 
-        'PASSWORD': 'amine',
+        'NAME': os.environ.get("POSTGRES_NAME"),
+        'USER': os.environ.get("POSTGRES_USER"), 
+        'PASSWORD': os.environ.get("POSTGRES_PASSWORD"),
         'HOST': 'db',
         'PORT': '5432',
     }

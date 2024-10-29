@@ -53,5 +53,22 @@
     "Player 3 (Top): R (left), T (right)": "اللاعب 3 (أعلى) R (يسار)، T (يمين)",
     "Player 4 (Bottom): U (left), O (right)": "اللاعب 4 (أسفل) U (يسار)، O (يمين)",
     " wins!": "!يفوز",
-    "AI Mode": "وضع الذكاء الاصطناعي"
+    "Choose your Preferable Language:": ":اختر اللغة المفضلة لديك",
+    "AI Mode": "وضع الذكاء الاصطناعي",
+    "2faEnabled": "2fa مفعل",
+    "2faDisabled": "2fa معطل",
+    "English": "الإنجليزية",
+    "Arabic": "العربية",
+    "Spanish": "الإسبانية",
+    "Japanese": "اليابانية",
+    "Tamazight": "الأمازيغية",
+    "First Team Name:": ":اسم الفريق الأول",
+    "Second Team Name:": ":اسم الفريق الثاني",
+    "Last Winner: ": ":الفائز الأخير ",
+    "Enter Your Name:": ":أدخل اسمك",
+    "AI: ": ":الذكاء الإصطناعي  ",
+    "one time password": "كلمة مرور لمرة واحدة",
+    "Confirm": "تأكيد",
+    "--Please choose an option--": "--يرجى الإختيار--",
+    "Number of Participants" : "عدد المشاركين"
 }

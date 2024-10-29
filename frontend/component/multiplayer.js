@@ -31,21 +31,24 @@ class MultiPlayer extends HTMLElement {
     showRegistrationPopup() {
         const username = getCookie('username') || 'Guest';
         this.innerHTML = `
-        </div>
         <div class="login-container">
-        <h2>Team Registration</h2>
-        <div class="form-group">
-        <input type="text" id="team1Name" placeholder="Team 1 Name">
-        <input type="text" id="team2Name" placeholder="Team 2 Name">
-        </div>
-        <button class="btn" id="registerTeams">Start Game</button>
+            <h2 data-i18n="Team Registration"></h2>
+            <div class="form-group">
+                <span data-i18n="First Team Name"></span><br>
+                <input type="text" id="team1Name">
+                <span data-i18n="Second Team Name"></span><br>
+                <input type="text" id="team2Name">
+            </div>
+            <button class="btn" id="registerTeams" data-i18n="Start Game"></button>
         </div>
         <div class="header">
-        <div class="content">
-            <p class="ebtn" id="username">${username}</p>
+            <div class="content">
+                <p class="ebtn" id="username">${username}</p>
+            </div>
         </div>
         `;
         this.querySelector('#registerTeams').addEventListener('click', this.registerTeams.bind(this));
+        changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
     }
 
     registerTeams() {
@@ -85,18 +88,20 @@ class MultiPlayer extends HTMLElement {
                 </div>
                 <canvas id="pongCanvas" width="${this.gameSize}" height="${this.gameSize}"></canvas>
                 <div id="controls">
-                    <p>Controls:</p>
-                    <p>Player 1 (Left): Q (up), A (down)</p>
-                    <p>Player 2 (Right): P (up), L (down)</p>
-                    <p>Player 3 (Top): R (left), T (right)</p>
-                    <p>Player 4 (Bottom): U (left), O (right)</p>
+                    <p data-i18n="Controls:"></p>
+                    <p data-i18n="Player 1 (Left): Q (up), A (down)"></p>
+                    <p data-i18n="Player 2 (Right): P (up), L (down)"></p>
+                    <p data-i18n="Player 3 (Top): R (left), T (right)"></p>
+                    <p data-i18n="Player 4 (Bottom): U (left), O (right)"></p>
                 </div>
                 <div class="header">
-                <div class="content">
-                    <p class="ebtn" id="username">${username}</p>
+                    <div class="content">
+                        <p class="ebtn" id="username">${username}</p>
+                    </div>
+                </div>
             </div>
         `;
-
+        changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         this.canvas = this.querySelector('#pongCanvas');
         this.ctx = this.canvas.getContext('2d');
         
@@ -299,16 +304,20 @@ class MultiPlayer extends HTMLElement {
         const winnerIndex = this.teamScores[0] > this.teamScores[1] ? 0 : 1;
         const username = getCookie('username') || 'Guest';
         this.innerHTML = `
-        <div class="login-container">
-            <h2 class="login-title">Game Over</h2>
-            <p class="word">${this.teamNames[winnerIndex]} wins!</p>
-            <button class="btn" id="restartGame">Play Again</button>
-            <button class="btn" id="returnToDashboard">Return to Dashboard</button>
-        </div>
-        <div class="header">
-        <div class="content">
-            <p class="ebtn" id="username">${username}</p>
+            <div class="login-container">
+                <h2 class="login-title" data-i18n="Game Over"></h2>
+                <span class="word"> ${this.teamNames[winnerIndex]} </span>
+                <span class="word" data-i18n=" wins!"></span><br>
+                <button class="btn" id="restartGame" data-i18n="Play Again"></button>
+                <button class="btn" id="returnToDashboard" data-i18n="Return to Dashboard"></button>
+            </div>
+            <div class="header">
+                <div class="content">
+                    <p class="ebtn" id="username">${username}</p>
+                </div>
+            </div>
         `;
+        changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         this.querySelector('#restartGame').addEventListener('click', () => this.startNewGame());
         this.querySelector('#returnToDashboard').addEventListener('click', this.returnToDashboard.bind(this));
     }

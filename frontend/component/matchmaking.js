@@ -8,7 +8,7 @@ class Matchmaking extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <h2 data-i18n="Matchmaking"></h2>
-            <span data-i18n="Enter your name"></span>
+            <span data-i18n="Enter your name"></span><br>
             <input type="text" id="playerName">
             <button id="joinQueue" data-i18n="Join Queue"></button>
             <div id="queueStatus"></div>

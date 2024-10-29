@@ -24,30 +24,30 @@ class dashboard extends HTMLElement
         console.log("2fa = ", fa, fda.fact);
 
         this.innerHTML = `
-        <label for="pet-select">Choose your Preferable Language:</label>
-        <select>
-        <option value="">--Please choose an option--</option>
-        <option id="English">English</option>
-        <option id="Arabic">Arabic</option>
-        <option id="Spanish">Spanish</option>
-        <option id="Japanese">Japanese</option>
-        <option id="Tamazight">Tamazight</option>
-        </select>
-        <div class="header">
-        <div class="content">
-            <button class="ebtn" id="username">${username}</button>
-            <button class="abtn" id="2fa"> ${fa ? '2FA enabled' : '2FA disabled'}</button>
-            <button class="abtn" id="log" data-i18n="Logout"></button>
-        </div>
-        </div>
-        <div class="main-container">
-            <div class="content">
-            <a href="#multiplayer" class="btn" data-i18n="Multiplayer"></a>
-            <a href="#tournament" class="btn" data-i18n="Pong Tournament"></a>
-            <a href="#pong" class="btn" data-i18n="Play Pong"></a>  
-            <a href="#ai" class="btn" data-i18n="AI Mode"></a>
+            <label for="pet-select" data-i18n="Choose your Preferable Language:"></label>
+            <select>
+                <option value="" data-i18n="--Please choose an option--"></option>
+                <option id="English" data-i18n="English"></option>
+                <option id="Arabic" data-i18n="Arabic"></option>
+                <option id="Spanish" data-i18n="Spanish"></option>
+                <option id="Japanese" data-i18n="Japanese"></option>
+                <option id="Tamazight" data-i18n="Tamazight"></option>
+            </select>
+            <div class="header">
+                <div class="content">
+                    <button class="ebtn" id="username">${username}</button>
+                    <button class="abtn" id="2fa">${fa ? '2FA enabled' : '2FA disabled'}</button>
+                    <button class="abtn" id="log" data-i18n="Logout"></button>
+                </div>
             </div>
-        </div>
+            <div class="main-container">
+                <div class="content">
+                    <a href="#multiplayer" class="btn" data-i18n="Multiplayer"></a>
+                    <a href="#tournament" class="btn" data-i18n="Pong Tournament"></a>
+                    <a href="#pong" class="btn" data-i18n="Play Pong"></a>  
+                    <a href="#ai" class="btn" data-i18n="AI Mode"></a>
+                </div>
+            </div>
         `;
         changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         function deleteCookie(name) {

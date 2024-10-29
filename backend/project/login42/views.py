@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import redirect
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.contrib.auth.models import User
@@ -11,8 +12,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from ua.views import set_token_cookies
 from doublefactor.views import send_otp
 
-UID = "u-s4t2ud-675e5069bbc568c9524d521aa9274b1df90a0e67de4c026bf7f003f5899cbdb1"
-SECRET = "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"
+UID = os.environ.get('UID')
+SECRET = os.environ.get('SECRET')
 AUTH_URL = "https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-675e5069bbc568c9524d521aa9274b1df90a0e67de4c026bf7f003f5899cbdb1&redirect_uri=https%3A%2F%2F127.0.0.1%3A8000%2Flogin42_redir%2F&response_type=code"
 REDIRECT_URI = 'https://127.0.0.1:8000/login42_redir/'
 
