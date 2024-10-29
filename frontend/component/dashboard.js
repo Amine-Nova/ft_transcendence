@@ -27,31 +27,31 @@ class dashboard extends HTMLElement
         console.log("2fa = ", fa, fda.fact);
         
         this.innerHTML = `
-        <button class="login-btn" id="2fa" data-i18n="${fa ? '2faEnabled' : '2faDisabled'}">${fa ? '2FA enabled' : '2FA disabled'}</button>
-        <label for="pet-select" data-i18n="Choose your Preferable Language:"></label>
-        <select>
-            <option value="" data-i18n="--Please choose an option--"></option>
-            <option id="English" data-i18n="English"></option>
-            <option id="Arabic" data-i18n="Arabic"></option>
-            <option id="Spanish" data-i18n="Spanish"></option>
-            <option id="Japanese" data-i18n="Japanese"></option>
-            <option id="Tamazight" data-i18n="Tamazight"></option>
-        </select>
-        <div class="header">
-            <div class="content">
-                <button class="btn" id="log" data-i18n="Logout"></button>
+            <button class="login-btn" id="2fa" data-i18n="${fa ? '2faEnabled' : '2faDisabled'}">${fa ? '2FA enabled' : '2FA disabled'}</button>
+            <label for="pet-select" data-i18n="Choose your Preferable Language:"></label>
+            <select>
+                <option value="" data-i18n="--Please choose an option--"></option>
+                <option id="English" data-i18n="English"></option>
+                <option id="Arabic" data-i18n="Arabic"></option>
+                <option id="Spanish" data-i18n="Spanish"></option>
+                <option id="Japanese" data-i18n="Japanese"></option>
+                <option id="Tamazight" data-i18n="Tamazight"></option>
+            </select>
+            <div class="header">
+                <div class="content">
+                    <button class="btn" id="log" data-i18n="Logout"></button>
+                </div>
             </div>
-        </div>
 
-        <p class="btn" id="username">${username}</p>
-        <div class="main-container">
-            <div class="content">
-                <a href="#multiplayer" class="btn" data-i18n="Multiplayer"></a>
-                <a href="#tournament" class="btn" data-i18n="Pong Tournament"></a>
-                <a href="#pong" class="btn" data-i18n="Play Pong"></a>  
-                <a href="#ai" class="btn" data-i18n="AI Mode"></a>
+            <p class="btn" id="username">${username}</p>
+            <div class="main-container">
+                <div class="content">
+                    <a href="#multiplayer" class="btn" data-i18n="Multiplayer"></a>
+                    <a href="#tournament" class="btn" data-i18n="Pong Tournament"></a>
+                    <a href="#pong" class="btn" data-i18n="Play Pong"></a>  
+                    <a href="#ai" class="btn" data-i18n="AI Mode"></a>
+                </div>
             </div>
-        </div>
         `;
         changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         function deleteCookie(name) {
