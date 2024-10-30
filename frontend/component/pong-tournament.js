@@ -49,7 +49,7 @@ class PongTournament extends HTMLElement {
             inputs += `<input type="text" id="player${i}" placeholder="Player ${i} Name" required><br>`;
         }
         this.innerHTML = `
-            <div class="login-container">
+            <div class="tournament-container">
                 <h2 data-i18n="Player Registration"></h2>
                 <form id="registrationForm">
                     ${inputs}
