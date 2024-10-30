@@ -17,11 +17,6 @@ function isAuthenticated()
     return token !== null;
 }
 
-function deleteCookie(name) 
-{
-    document.cookie = `${name}=; expires=Thu, 20 Sep 2001 00:00:00 UTC; path=/;`;
-}
-
 
 async function navigate(){
     await CheckAuthenticated();
@@ -29,10 +24,10 @@ async function navigate(){
     const path = window.location.hash.substring(1);
     const page = route[path];
     const container = document.getElementById('container');
-    if ((isAuthenticated()) && page !== "signup-component" && page !== "signin-component") {
+    if ((isAuthenticated()) && page !== "signup-component" && page !== "signin-component" && page !== "home-component" && page !== "verify-component") {
         container.innerHTML = `<${page}></${page}>`;
     }
-    else if ((isAuthenticated()) && (page === "signup-component" || page === "signin-component"))
+    else if ((isAuthenticated()) && (page === "signup-component" || page === "signin-component" || page === "verify-component"))
         window.location.hash = "#dashboard";
     else if (page !== "signup-component" && page !== "signin-component" && page !== "home-component" && page !== "verify-component")
     {

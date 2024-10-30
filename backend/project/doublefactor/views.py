@@ -43,7 +43,6 @@ def send_otp(username):
         )
 
         print("---------------------------------------------------")
-        print(f"one time password is {otp.otp_code}")
         print(f"expires at {otp.otp_expires_at}")
         print(f"sending to email :{user.email}")
         print("---------------------------------------------------")

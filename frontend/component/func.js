@@ -5,11 +5,6 @@ export function getCookie(name)
     if (parts.length === 2) return parts.pop().split(';').shift();
     return null;
 }
-function deleteCookie(name) 
-{
-    document.cookie = `${name}=; expires=Thu, 20 Sep 2001 00:00:00 UTC; path=/;`;
-}
-
 let access = getCookie('access');
 
 export async function CheckAuthenticated()
@@ -62,4 +57,8 @@ export async function CheckAuthenticated()
         console.log('Authenticated');
         return true;
     }
+}
+
+export function deleteCookie(name) {
+    document.cookie = `${name}=; expires=Thu, 20 Sep 2001 00:00:00 UTC; path=/;`;
 }

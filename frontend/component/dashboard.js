@@ -1,6 +1,7 @@
 import { CheckAuthenticated } from "./func.js";
 import { getCookie} from "./func.js";
 import { changeLanguage } from "../assets/js/script.js";
+import { deleteCookie } from "./func.js";
 class dashboard extends HTMLElement
 {
     async connectedCallback()
@@ -50,9 +51,6 @@ class dashboard extends HTMLElement
             </div>
         `;
         changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
-        function deleteCookie(name) {
-            document.cookie = `${name}=; expires=Thu, 20 Sep 2001 00:00:00 UTC; path=/;`;
-        }
         await CheckAuthenticated();
         let submitBuuton = document.getElementById("log");
         let english = document.getElementById("English");
