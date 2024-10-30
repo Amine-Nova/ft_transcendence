@@ -25,15 +25,7 @@ class dashboard extends HTMLElement
         console.log("2fa = ", fa, fda.fact);
 
         this.innerHTML = `
-            <label for="pet-select" data-i18n="Choose your Preferable Language:"></label>
-            <select>
-                <option value="" data-i18n="--Please choose an option--"></option>
-                <option id="English" data-i18n="English"></option>
-                <option id="Arabic" data-i18n="Arabic"></option>
-                <option id="Spanish" data-i18n="Spanish"></option>
-                <option id="Japanese" data-i18n="Japanese"></option>
-                <option id="Tamazight" data-i18n="Tamazight"></option>
-            </select>
+           
             <div class="header">
                 <div class="content">
                     <button class="ebtn" id="username">${username}</button>
@@ -42,11 +34,24 @@ class dashboard extends HTMLElement
                 </div>
             </div>
             <div class="main-container">
-                <div class="content">
-                    <a href="#multiplayer" class="btn" data-i18n="Multiplayer"></a>
-                    <a href="#tournament" class="btn" data-i18n="Pong Tournament"></a>
-                    <a href="#pong" class="btn" data-i18n="Play Pong"></a>  
-                    <a href="#ai" class="btn" data-i18n="AI Mode"></a>
+                <div class="dashboard">
+                    <div class="select">
+                        <label for="pet-select" data-i18n="Choose your Preferable Language:"></label>
+                        <select>
+                            <option value="" data-i18n="--Please choose an option--"></option>
+                            <option id="English" data-i18n="English"></option>
+                            <option id="Arabic" data-i18n="Arabic"></option>
+                            <option id="Spanish" data-i18n="Spanish"></option>
+                            <option id="Japanese" data-i18n="Japanese"></option>
+                            <option id="Tamazight" data-i18n="Tamazight"></option>
+                        </select>
+                    </div>
+                    <div class="elements">
+                        <a href="#multiplayer" class="btn" data-i18n="Multiplayer"></a>
+                        <a href="#tournament" class="btn" data-i18n="Pong Tournament"></a>
+                        <a href="#pong" class="btn" data-i18n="Play Pong"></a>  
+                        <a href="#ai" class="btn" data-i18n="AI Mode"></a>
+                    </div>
                 </div>
             </div>
         `;

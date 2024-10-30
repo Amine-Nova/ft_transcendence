@@ -3,7 +3,6 @@
 
 /* Container for the login box */
 .login-container {
-    background-color: url('../img/pingpong4.jpeg'); /* Transparent black background */
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
@@ -13,6 +12,16 @@
     animation: fadeIn 1s ease-in-out;
     margin: 14em;
     margin-left: 20px;
+}
+
+.tournament-container {
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 1s ease-in-out;
 }
 
 /* Login title styling */
@@ -86,17 +95,6 @@
     color: #0056b3;
 }
 
-/* Fade-in animation for the container */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* Responsive Design */
 @media (max-width: 480px) {
