@@ -8,6 +8,19 @@ body{
 	background-size: cover;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	color: #fff;
+	overflow: hidden;
+}
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    height: 100vh; /* Ensures no overflow */
+    flex-direction: column;
+    overflow: hidden; /* Disables scrolling */
+    background: url('../img/output.png') no-repeat center center;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
 }
 
 *, ::after, ::before {/*change*/
@@ -144,4 +157,11 @@ h3 {
 		padding: 12px;
 		font-size: 1.1em;
 	}
+}
+
+.score-container
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

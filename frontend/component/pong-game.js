@@ -127,8 +127,8 @@ class PongGame extends HTMLElement {
         this.innerHTML = `
             <div id="gameArea">
                 <div class="score-container" id="scoreBoard">
-                    <span class="score" id="player1Score">${this.player1Name}: 0</span> -
-                    <span class="score" id="player2Score">${this.player2Name}: 0</span>
+                    <span class="btn" id="player1Score">${this.player1Name}: 0</span> -
+                    <span class="btn" id="player2Score">${this.player2Name}: 0</span>
                 </div>
                 <canvas id="pongCanvas" width="1000" height="500"></canvas>
             </div>

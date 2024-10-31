@@ -83,8 +83,8 @@ class MultiPlayer extends HTMLElement {
         this.innerHTML = `
             <div id="gameArea">
                 <div class="score-container" id="scoreBoard">
-                    <span class="score" id="team1Score" style="color:red">${this.teamNames[0]}: 0</span> |
-                    <span class="score" id="team2Score" style="color:blue">${this.teamNames[1]}: 0</span>
+                    <span class="btn" id="team1Score" style="color:red">${this.teamNames[0]}: 0</span> |
+                    <span class="btn" id="team2Score" style="color:blue">${this.teamNames[1]}: 0</span>
                 </div>
                 <canvas id="pongCanvas" width="${this.gameSize}" height="${this.gameSize}"></canvas>
                 <div id="controls">

@@ -32,7 +32,7 @@ class PongTournament extends HTMLElement {
             <h2 data-i18n="Pong Tournament Setup"></h2>
             <form id="participantCountForm">
                 <label for="participantCount" data-i18n="Number of Participants"></label>
-                <input type="number" id="participantCount" min="2" max="16" required>
+                <input type="number" id="participantCount" min="2" max="8" required>
                 <button class="btn" id="registerPlayers" type="submit" data-i18n="Next"></button>
             </form>
         </div>

@@ -64,8 +64,8 @@ class AiComponent extends HTMLElement {
         this.innerHTML = `
             <div id="gameArea">
                 <div class="score-container" id="scoreBoard">
-                    <span class="score" id="player1Score">${this.playerName}: 0</span> -
-                    <span class="score" id="player2Score">AI: 0</span>
+                    <span class="btn" id="player1Score">${this.playerName}: 0</span> -
+                    <span class="btn" id="player2Score">AI: 0</span>
                 </div>
                 <canvas id="pongCanvas" width="1000" height="500"></canvas>
             </div>
