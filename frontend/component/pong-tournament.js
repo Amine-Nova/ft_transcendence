@@ -1,4 +1,5 @@
 import { changeLanguage } from "../assets/js/script.js";
+import { getCookie} from "./func.js";
 class PongTournament extends HTMLElement {
     constructor() {
         super();
@@ -17,6 +18,7 @@ class PongTournament extends HTMLElement {
     }
 
     showParticipantCountForm() {
+        const username = getCookie('username') || 'Guest';
         this.innerHTML = `
         <style>
             label {
@@ -34,6 +36,10 @@ class PongTournament extends HTMLElement {
                 <button class="btn" id="registerPlayers" type="submit" data-i18n="Next"></button>
             </form>
         </div>
+        <div class="header">
+        <div class="content">
+            <button class="ebtn" id="username">${username}</button>
+
     `;
         changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         this.querySelector('#participantCountForm').addEventListener('submit', (e) => {
@@ -44,6 +50,7 @@ class PongTournament extends HTMLElement {
     }
 
     showRegistrationForm(count) {
+        const username = getCookie('username') || 'Guest';
         let inputs = '';
         for (let i = 1; i <= count; i++) {
             inputs += `<input type="text" id="player${i}" placeholder="Player ${i} Name" required><br>`;
@@ -56,6 +63,9 @@ class PongTournament extends HTMLElement {
                     <button class="btn" id="registerPlayers" type="submit" data-i18n="Start Tournament"></button>
                 </form>
             </div>
+        <div class="header">
+        <div class="content">
+            <button class="ebtn" id="username">${username}</button>
         `;
         changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         this.querySelector('#registrationForm').addEventListener('submit', (e) => {
@@ -125,7 +135,7 @@ class PongTournament extends HTMLElement {
     showMatchmaking(player1, player2) {
         // Retrieve the previous match winner from localStorage
         const previousWinner = localStorage.getItem('previousWinner');
-    
+        const username = getCookie('username') || 'Guest';
         this.innerHTML = `
             <style>
                 .form-group p {
@@ -162,6 +172,9 @@ class PongTournament extends HTMLElement {
                 </div>
                 <button class="btn" id="startMatch" data-i18n="Start Match"></button>
             </div>
+            <div class="header">
+            <div class="content">
+            <button class="ebtn" id="username">${username}</button>
         `;
         changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         this.querySelector('#startMatch').addEventListener('click', () => this.startMatch(player1, player2));
@@ -208,6 +221,7 @@ class PongTournament extends HTMLElement {
     }
 
     declareTournamentWinner(winner) {
+        const username = getCookie('username') || 'Guest';
         this.innerHTML = `
         <style>
             .login-container {
@@ -244,6 +258,9 @@ class PongTournament extends HTMLElement {
             <button class="btn" id="newTournament" data-i18n="Start New Tournament"></button>
             <button class="btn" id="returnToDashboard" data-i18n="Return to Dashboard"></button>
         </div>
+        <div class="header">
+        <div class="content">
+            <button class="ebtn" id="username">${username}</button>
     `;
     changeLanguage(localStorage.getItem('preferredLanguage') || 'en');
         this.querySelector('#newTournament').addEventListener('click', () => {

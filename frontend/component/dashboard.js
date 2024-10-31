@@ -31,20 +31,16 @@ class dashboard extends HTMLElement
                     <button class="ebtn" id="username">${username}</button>
                     <button class="abtn" id="2fa">${fa ? '2FA enabled' : '2FA disabled'}</button>
                     <button class="abtn" id="log" data-i18n="Logout"></button>
+                    <button class="abtn" id="English">EN</button>
+                    <button class="abtn" id="Arabic">AR</button>
+                    <button class="abtn" id="Spanish">ES</button>
+                    <button class="abtn" id="Japanese">JP</button>
+                    <button class="abtn" id="Tamazight">TMZ</button>
                 </div>
             </div>
             <div class="main-container">
                 <div class="dashboard">
                     <div class="select">
-                        <label for="pet-select" data-i18n="Choose your Preferable Language:"></label>
-                        <select>
-                            <option value="" data-i18n="--Please choose an option--"></option>
-                            <option id="English" data-i18n="English"></option>
-                            <option id="Arabic" data-i18n="Arabic"></option>
-                            <option id="Spanish" data-i18n="Spanish"></option>
-                            <option id="Japanese" data-i18n="Japanese"></option>
-                            <option id="Tamazight" data-i18n="Tamazight"></option>
-                        </select>
                     </div>
                     <div class="elements">
                         <a href="#multiplayer" class="btn" data-i18n="Multiplayer"></a>

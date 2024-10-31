@@ -54,7 +54,7 @@
     "Player 4 (Bottom): U (left), O (right)": "プレイヤー 4 (下) U (左)、O (右)",
     " wins!": " が勝利!",
     "Choose your Preferable Language:": "ご希望の言語を選択してください:",
-    "AI Mode": "AI モード",
+    "AI Mode": "人工知能 モード",
     "2faEnabled": "2fa 有効",
     "2faDisabled": "2fa 無効",
     "English": "英語",
@@ -66,9 +66,8 @@
     "Second Team Name:": "2 番目のチーム名:",
     "Last Winner: ": "前回の優勝者:",
     "Enter Your Name:": "お名前を入力してください:",
-    "AI: ": "AI:",
+    "AI: ": "人工知能: ",
     "one time password": "ワンタイム パスワード",
     "Confirm": "確認",
-    "--Please choose an option--": "--オプションを選択してください--",
     "Number of Participants" : "参加者数"
 }
