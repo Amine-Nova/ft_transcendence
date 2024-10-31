@@ -78,7 +78,7 @@ class dashboard extends HTMLElement
                 })
 
             })
-            document.cookie = `language=en; path=/; SameSite=None; Secure`;
+            document.cookie = `language=en; path=/; Secure; SameSite=Lax`;
             changeLanguage('en');
         });
         arabic.addEventListener('click', async function(event)
@@ -94,7 +94,7 @@ class dashboard extends HTMLElement
                     language: 'ar'
                 })
             })
-            document.cookie = `language=ar; path=/; SameSite=None; Secure`;
+            document.cookie = `language=ar; path=/; Secure; SameSite=Lax`;
             changeLanguage('ar');
         });
         spanish.addEventListener('click', async function(event)
@@ -110,7 +110,7 @@ class dashboard extends HTMLElement
                     language: 'es'
                 })
             })
-            document.cookie = `language=es; path=/; SameSite=None; Secure`;
+            document.cookie = `language=es; path=/; Secure; SameSite=Lax`;
             changeLanguage('es');
         });
         japanese.addEventListener('click', async function(event)
@@ -126,11 +126,12 @@ class dashboard extends HTMLElement
                     language: 'jap'
                 })
             })
-            document.cookie = `language=jap; path=/; SameSite=None; Secure`;
+            document.cookie = `language=jap; path=/; Secure; SameSite=Lax`;
             changeLanguage('jap');
         });
         tamazight.addEventListener('click', async function(event)
         {
+            console.log("here")
             const res = await fetch("https://0.0.0.0:8000/lang/",
             {
                 method :"PUT",
@@ -142,7 +143,7 @@ class dashboard extends HTMLElement
                     language: 'tmz'
                 })
             })
-            document.cookie = `language=tmz; path=/; SameSite=None; Secure`;
+            document.cookie = `language=tmz; path=/; Secure; SameSite=Lax`;
             changeLanguage('tmz');
         });
         let lang = getCookie('language')

@@ -22,7 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
         user = User(
             username=validated_data['username'],
             email=validated_data['email'],
-            first_name="eng",
+            first_name="en",
             last_name="f"
         )
         user.set_password(validated_data['password']) 

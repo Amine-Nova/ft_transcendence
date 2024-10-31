@@ -73,7 +73,7 @@ def login42_redir(request):
             username=username,
             defaults={
                 'email': user_info.get('email'),
-                'first_name': "eng",
+                'first_name': "en",
                 'last_name': "f",
             }
         )

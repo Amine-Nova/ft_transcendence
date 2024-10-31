@@ -1,4 +1,5 @@
 export function loadLanguage(lang) {
+  console.log("the lang is: ", lang);
   fetch(`/assets/lang/${lang}.json`)
       .then((response) => response.json())
       .then((translations) => {

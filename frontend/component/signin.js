@@ -89,7 +89,7 @@ class signin extends HTMLElement{
                 {
                     document.cookie = `refresh=${data.refresh}; path=/; SameSite=None; Secure`;
                     document.cookie = `access=${data.access}; path=/; SameSite=None; Secure`;
-                    document.cookie = `language=${data.language}; path=/; SameSite=None; Secure`;
+                    document.cookie = `language=${data.language}; path=/; Secure; SameSite=Lax`;
                 }
                 changeLanguage(data.language);
                 window.location.hash = page;

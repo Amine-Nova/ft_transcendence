@@ -71,8 +71,8 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://127.0.0.1",
+    "https://0.0.0.0",
     "https://localhost:443",
-    "https://0.0.0.0:443",
 ]
 
 ROOT_URLCONF = 'main.urls'

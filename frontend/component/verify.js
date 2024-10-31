@@ -51,7 +51,7 @@ class verify extends HTMLElement{
                 document.cookie = `refresh=${data.refresh}; path=/; SameSite=None; Secure`;
                 document.cookie = `access=${data.access}; path=/; SameSite=None; Secure`;
                 document.cookie = `username=${data.username}; path=/; SameSite=None; Secure`;
-                document.cookie = `language=${data.language}; path=/; SameSite=None; Secure`;
+                document.cookie = `language=${data.language}; path=/; Secure; SameSite=Lax`;
                 window.location.hash = "#dashboard";
             } 
             else 
